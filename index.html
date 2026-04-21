@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dodee &amp; Onur — English for little ones (0–4) on YouTube</title>
+    <meta
+      name="description"
+      content="Dodee &amp; Onur — a gentle YouTube show for ages 0–4. Episode 1 launches April 23, 2026. Join the countdown and daily fun."
+    />
+    <meta property="og:title" content="Dodee &amp; Onur — English for little ones" />
+    <meta
+      property="og:description"
+      content="A warm show for babies and toddlers. Free on YouTube. Episode 1: April 23, 2026."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_GB" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;700&family=Galindo&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-shell">
+      <nav class="site-nav" aria-label="Primary navigation">
+        <div class="site-nav__bar wrap">
+          <a class="site-nav__brand" href="index.html" aria-current="page">Dodee &amp; Onur</a>
+          <ul class="site-nav__list" role="list">
+            <li><a href="about.html">About</a></li>
+            <li><a href="videos.html">Videos</a></li>
+            <li><a href="press.html">Press</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="site-header" id="hero" aria-labelledby="hero-heading">
+        <div class="hero__art" aria-hidden="true">
+          <img
+            class="hero__art-img"
+            src="assets/hero-characters.png"
+            width="1024"
+            height="763"
+            alt=""
+            decoding="async"
+            fetchpriority="high"
+          />
+        </div>
+        <div class="hero__content">
+          <p class="hero__eyebrow section__eyebrow">YouTube Kids series</p>
+          <h1 id="hero-heading" class="hero__tagline">
+            <span class="visually-hidden">Dodee &amp; Onur — </span>
+            <span class="hero__tagline-line">English for little ones • Ages 0–4</span>
+            <span class="hero__tagline-line">Free on YouTube</span>
+          </h1>
+        </div>
+      </section>
+      <section
+        class="page-band page-band--countdown section"
+        id="countdown"
+        aria-labelledby="countdown-heading"
+      >
+        <div class="wrap">
+        <div class="section__inner" data-countdown>
+          <h2 id="countdown-heading" class="visually-hidden">Countdown to Episode 1</h2>
+          <p class="countdown__prompt">Hey! Are you there?</p>
+          <p class="countdown__sub">The adventure begins in…</p>
+          <div class="countdown__grid" role="timer" aria-live="polite" aria-atomic="true">
+            <div class="countdown__unit">
+              <div class="countdown__num" data-countdown-days>—</div>
+              <div class="countdown__label">Days</div>
+            </div>
+            <div class="countdown__unit">
+              <div class="countdown__num" data-countdown-hours>—</div>
+              <div class="countdown__label">Hours</div>
+            </div>
+            <div class="countdown__unit">
+              <div class="countdown__num" data-countdown-minutes>—</div>
+              <div class="countdown__label">Minutes</div>
+            </div>
+            <div class="countdown__unit">
+              <div class="countdown__num" data-countdown-seconds>—</div>
+              <div class="countdown__label">Seconds</div>
+            </div>
+          </div>
+          <p class="countdown__meta" data-countdown-live>
+            Episode 1: 23 April 2026 • 09:00 (Turkey Time)
+          </p>
+          <a class="countdown__cta" href="#launch-alert">Remind me on April 23rd!</a>
+        </div>
+        </div>
+      </section>
+
+      <section class="page-band page-band--color-game section" id="game" aria-labelledby="game-heading">
+        <div class="wrap">
+        <div class="section__inner" data-color-game>
+          <p class="section__eyebrow">Daily game</p>
+          <h2 id="game-heading" class="section__title">Guess Dodee’s Color Today!</h2>
+          <p class="section__lead">A new color every day — can you get them all?</p>
+          <div class="color-row" role="group" aria-label="Pick today’s color">
+            <button type="button" class="color-btn" data-color-choice="RED">RED</button>
+            <button type="button" class="color-btn" data-color-choice="GREEN">GREEN</button>
+            <button type="button" class="color-btn" data-color-choice="BLUE">BLUE</button>
+          </div>
+          <p class="color-streak">
+            Your streak: <span data-color-streak>0</span> correct in a row
+          </p>
+          <p class="color-feedback" data-color-feedback hidden></p>
+        </div>
+        </div>
+      </section>
+
+      <section class="page-band page-band--clue section" id="clue" aria-labelledby="clue-heading">
+        <div class="wrap">
+        <div class="section__inner" data-mystery-clue>
+          <div class="clue-head">
+            <p class="section__eyebrow">Daily mystery</p>
+            <p class="section__eyebrow" data-clue-day-label>Day — of 13</p>
+          </div>
+          <h2 id="clue-heading" class="section__title">DAILY MYSTERY CLUE</h2>
+          <p class="clue-loading" data-clue-loading>Loading today’s clue…</p>
+          <p class="clue-text" data-clue-text hidden></p>
+          <div class="clue-form">
+            <label class="visually-hidden" for="clue-guess">Your guess</label>
+            <input
+              id="clue-guess"
+              class="clue-input"
+              type="text"
+              data-clue-guess
+              placeholder="Your guess…"
+              autocomplete="off"
+            />
+            <button type="button" class="clue-guess-btn" data-clue-guess-btn>Guess!</button>
+          </div>
+          <p class="clue-share" data-clue-share>
+            <span data-clue-share-default>
+              Share your guess → <strong>#DodeeClue</strong> on
+              <a
+                class="follow-link follow-link--inline"
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram (opens in a new tab)"
+              >
+                <svg
+                  class="follow-link__icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                  />
+                </svg>
+              </a>
+              <span class="clue-share__amp" aria-hidden="true"> &amp; </span>
+              <a
+                class="follow-link follow-link--inline"
+                href="https://www.tiktok.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok (opens in a new tab)"
+              >
+                <svg
+                  class="follow-link__icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.14-1.99 1.08-3.99 2.75-5.17 1.18-.8 2.64-1.27 4.1-1.28zm.51 7.29c-.11 0-.23.01-.34.01-.51.03-1.01.15-1.45.38-1.13.58-1.85 1.81-1.89 3.05-.05 1.29.51 2.56 1.51 3.33.71.55 1.63.85 2.55.88.93.04 1.87-.23 2.6-.78 1.01-.74 1.62-1.98 1.65-3.25.02-.99-.01-1.98 0-2.97-.79-.05-1.58-.33-2.2-.81-.76-.58-1.25-1.42-1.43-2.32-.35 0-.68.01-1.02.01z"
+                  />
+                </svg>
+              </a>
+            </span>
+            <span class="clue-share__quote" data-clue-share-quote hidden></span>
+          </p>
+        </div>
+        </div>
+      </section>
+
+      <section
+        class="page-band page-band--launch section"
+        id="launch-alert"
+        aria-labelledby="launch-heading"
+      >
+        <div class="wrap">
+        <div class="section__inner" data-launch-form>
+          <p class="section__eyebrow">Stay in the loop</p>
+          <h2 id="launch-heading" class="section__title">Get the Launch Alert!</h2>
+          <form class="launch-form" action="#" method="post" novalidate>
+            <!-- Future: POST to Formspree, Resend, or your API -->
+            <div class="launch-row">
+              <label class="visually-hidden" for="launch-email">Email</label>
+              <input
+                id="launch-email"
+                class="launch-email"
+                name="email"
+                type="email"
+                inputmode="email"
+                autocomplete="email"
+                placeholder="your@email.com"
+                data-launch-email
+                aria-describedby="launch-note launch-status"
+              />
+              <button type="submit" class="launch-submit" data-launch-submit>Sign me up!</button>
+            </div>
+            <p id="launch-note" class="launch-note">
+              We’ll email you the morning of April 23rd<br />
+              Unlock a secret bonus activity today!<br />
+              No spam. Just Dodee. Unsubscribe anytime.
+            </p>
+            <p
+              class="launch-status"
+              id="launch-status"
+              data-launch-status
+              hidden
+              role="status"
+              aria-live="polite"
+            ></p>
+          </form>
+        </div>
+        </div>
+      </section>
+
+      <section class="page-band page-band--follow section" id="follow" aria-labelledby="follow-heading">
+        <div class="wrap">
+        <div class="section__inner">
+          <h2 id="follow-heading" class="section__title">Follow Dodee’s World</h2>
+          <nav class="follow-links" aria-label="Social links">
+            <a
+              class="follow-link"
+              href="https://www.youtube.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="YouTube (opens in a new tab)"
+            >
+              <svg class="follow-link__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  fill="currentColor"
+                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                />
+              </svg>
+            </a>
+            <a
+              class="follow-link"
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram (opens in a new tab)"
+            >
+              <svg class="follow-link__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  fill="currentColor"
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                />
+              </svg>
+            </a>
+            <a
+              class="follow-link"
+              href="https://www.tiktok.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TikTok (opens in a new tab)"
+            >
+              <svg class="follow-link__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  fill="currentColor"
+                  d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.14-1.99 1.08-3.99 2.75-5.17 1.18-.8 2.64-1.27 4.1-1.28zm.51 7.29c-.11 0-.23.01-.34.01-.51.03-1.01.15-1.45.38-1.13.58-1.85 1.81-1.89 3.05-.05 1.29.51 2.56 1.51 3.33.71.55 1.63.85 2.55.88.93.04 1.87-.23 2.6-.78 1.01-.74 1.62-1.98 1.65-3.25.02-.99-.01-1.98 0-2.97-.79-.05-1.58-.33-2.2-.81-.76-.58-1.25-1.42-1.43-2.32-.35 0-.68.01-1.02.01z"
+                />
+              </svg>
+            </a>
+            <a
+              class="follow-link"
+              href="https://open.spotify.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Spotify (opens in a new tab)"
+            >
+              <svg class="follow-link__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  fill="currentColor"
+                  d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"
+                />
+              </svg>
+            </a>
+          </nav>
+        </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="footer-inner wrap">
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="privacy.html">Privacy Policy</a>
+          <span class="footer-dot" aria-hidden="true">•</span>
+          <a href="press.html">Press</a>
+          <span class="footer-dot" aria-hidden="true">•</span>
+          <a href="contact.html">Contact</a>
+          <span class="footer-dot" aria-hidden="true">•</span>
+          <span
+            >Presented by
+            <a href="https://www.ebebek.com" target="_blank" rel="noopener noreferrer">ebebek</a></span
+          >
+        </nav>
+      </div>
+    </footer>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
