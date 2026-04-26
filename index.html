@@ -38,7 +38,22 @@
       <nav class="site-nav" aria-label="Primary navigation">
         <div class="site-nav__bar wrap">
           <a class="site-nav__brand" href="index.html" aria-current="page"><img src="assets/nav-logo.png" alt="Dodee &amp; Onur" width="77" height="32" /></a>
-          <ul class="site-nav__list" role="list">
+          <button
+            type="button"
+            class="site-nav__toggle"
+            id="primary-nav-toggle"
+            aria-expanded="false"
+            aria-controls="primary-nav-list"
+            aria-label="Open menu"
+          >
+            <span class="visually-hidden">Menu</span>
+            <span class="site-nav__toggle-icon" aria-hidden="true">
+              <span class="site-nav__toggle-line"></span>
+              <span class="site-nav__toggle-line"></span>
+              <span class="site-nav__toggle-line"></span>
+            </span>
+          </button>
+          <ul class="site-nav__list" id="primary-nav-list" role="list">
             <li><a href="about.html">About</a></li>
             <li><a href="videos.html">Episodes</a></li>
             <li><a href="for-parents.html">For Parents</a></li>
@@ -301,6 +316,7 @@
       </div>
     </footer>
 
+    <script type="module" src="js/nav.js"></script>
     <script type="module" src="js/main.js"></script>
   </body>
 </html>
