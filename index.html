@@ -29,82 +29,90 @@
     <header class="site-shell">
       <nav class="site-nav" aria-label="Primary navigation">
         <div class="site-nav__bar wrap">
-          <a class="site-nav__brand" href="index.html" aria-current="page">Dodee &amp; Onur</a>
+          <a class="site-nav__brand" href="index.html" aria-current="page"><img src="assets/nav-logo.png" alt="Dodee &amp; Onur" width="77" height="32" /></a>
           <ul class="site-nav__list" role="list">
             <li><a href="about.html">About</a></li>
-            <li><a href="videos.html">Videos</a></li>
-            <li><a href="press.html">Press</a></li>
+            <li><a href="videos.html">Episodes</a></li>
+            <li><a href="for-parents.html">For Parents</a></li>
             <li><a href="contact.html">Contact</a></li>
+            <li><a class="nav-cta" href="https://www.youtube.com/@Dodee-Our-Buddy" target="_blank" rel="noopener noreferrer">&#9654; Watch Free</a></li>
           </ul>
         </div>
       </nav>
     </header>
 
     <main id="main">
+      <!-- HERO: Figma 6:7 (1512×868 ref). Frame fills 100svh/100dvh; character & copy are %-positioned in .hero__frame -->
       <section class="site-header" id="hero" aria-labelledby="hero-heading">
-        <div class="hero__art" aria-hidden="true">
-          <img
-            class="hero__art-img"
-            src="assets/hero-characters.png"
-            width="1024"
-            height="763"
-            alt=""
-            decoding="async"
-            fetchpriority="high"
-          />
-        </div>
-        <div class="hero__content">
-          <p class="hero__eyebrow section__eyebrow">YouTube Kids series</p>
-          <h1 id="hero-heading" class="hero__tagline">
-            <span class="visually-hidden">Dodee &amp; Onur — </span>
-            <span class="hero__tagline-line">English for little ones • Ages 0–4</span>
-            <span class="hero__tagline-line">Free on YouTube</span>
-          </h1>
+        <div class="hero__frame">
+          <div class="hero__character" aria-hidden="true">
+            <img
+              class="hero__art-img"
+              src="assets/hero-characters.png"
+              alt=""
+              width="647"
+              height="647"
+              decoding="async"
+              fetchpriority="high"
+            />
+          </div>
+          <div class="hero__content">
+            <p class="hero__eyebrow section__eyebrow">YouTube Kids series</p>
+            <h1 id="hero-heading" class="hero__tagline">
+              <span class="visually-hidden">Dodee &amp; Onur — </span>
+              <span class="hero__tagline-line">English for little ones • Ages 0&#8211;4</span>
+              <span class="hero__tagline-line">Free on YouTube</span>
+            </h1>
+          </div>
         </div>
       </section>
+
+      <!-- TEASER — decorations positioned relative to section band -->
       <section
-        class="page-band page-band--countdown section"
-        id="countdown"
-        aria-labelledby="countdown-heading"
+        class="page-band page-band--teaser section"
+        id="teaser"
+        aria-labelledby="teaser-heading"
       >
+        <div class="page-band__artboard">
+        <img class="sec-decor" style="left:calc(var(--center-x) - 339px);top:calc(64px - 44px);width:115px;height:112px" src="assets/decor-star.svg" alt="" aria-hidden="true" />
+        <img class="sec-decor" style="left:calc(var(--center-x) + 992px);top:calc(64px - 44px);width:115px;height:112px" src="assets/decor-star.svg" alt="" aria-hidden="true" />
+        <img class="sec-decor" style="left:calc(var(--center-x) - 263px);top:calc(64px - 15px);width:191px;height:188px" src="assets/decor-sun.svg" alt="" aria-hidden="true" />
+        <img class="sec-decor" style="left:calc(var(--center-x) - 293px);top:calc(64px + 199px);width:88px;aspect-ratio:88/93" src="assets/decor-note2.svg" alt="" aria-hidden="true" />
+        <img class="sec-decor" style="left:calc(var(--center-x) + 807px);top:calc(64px + 97px);width:300px;aspect-ratio:300/414" src="assets/teaser-dodee-plush.png" alt="" aria-hidden="true" />
         <div class="wrap">
-        <div class="section__inner" data-countdown>
-          <h2 id="countdown-heading" class="visually-hidden">Countdown to Episode 1</h2>
-          <p class="countdown__prompt">Hey! Are you there?</p>
-          <p class="countdown__sub">The adventure begins in…</p>
-          <div class="countdown__grid" role="timer" aria-live="polite" aria-atomic="true">
-            <div class="countdown__unit">
-              <div class="countdown__num" data-countdown-days>—</div>
-              <div class="countdown__label">Days</div>
-            </div>
-            <div class="countdown__unit">
-              <div class="countdown__num" data-countdown-hours>—</div>
-              <div class="countdown__label">Hours</div>
-            </div>
-            <div class="countdown__unit">
-              <div class="countdown__num" data-countdown-minutes>—</div>
-              <div class="countdown__label">Minutes</div>
-            </div>
-            <div class="countdown__unit">
-              <div class="countdown__num" data-countdown-seconds>—</div>
-              <div class="countdown__label">Seconds</div>
+        <div class="section__inner">
+          <h2 id="teaser-heading" class="section__title section__title--teaser">Meet&nbsp;Dodee&nbsp;for the First Time</h2>
+          <p class="section__lead">Watch our teaser and discover the colorful world of Dodee &amp; Onur — where every episode is a new adventure packed with English learning magic.</p>
+          <div class="teaser-embed" aria-label="Teaser video">
+            <div class="teaser-embed__inner">
+              <iframe
+                class="teaser-embed__iframe"
+                src="https://www.youtube.com/embed/tHlpVMTYDhg"
+                title="Dodee teaser on YouTube"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+              ></iframe>
             </div>
           </div>
-          <p class="countdown__meta" data-countdown-live>
-            Episode 1: 23 April 2026 • 09:00 (Turkey Time)
-          </p>
-          <a class="countdown__cta" href="#launch-alert">Remind me on April 23rd!</a>
+          <a class="teaser__cta" href="https://www.youtube.com/@Dodee-Our-Buddy" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+        </div>
         </div>
         </div>
       </section>
 
+      <!-- COLOR GAME -->
       <section class="page-band page-band--color-game section" id="game" aria-labelledby="game-heading">
+        <div class="page-band__artboard">
+        <img class="sec-decor" style="left:16px;top:81.5px;width:332px;height:215px" src="assets/decor-cloud.svg" alt="" aria-hidden="true" />
+        <img class="sec-decor" style="left:calc(100% - 171px);top:33.5px;width:109px;aspect-ratio:108/96" src="assets/decor-heart.svg" alt="" aria-hidden="true" />
         <div class="wrap">
         <div class="section__inner" data-color-game>
           <p class="section__eyebrow">Daily game</p>
-          <h2 id="game-heading" class="section__title">Guess Dodee’s Color Today!</h2>
-          <p class="section__lead">A new color every day — can you get them all?</p>
-          <div class="color-row" role="group" aria-label="Pick today’s color">
+          <h2 id="game-heading" class="section__title">Guess Dodee&#8217;s Color Today!</h2>
+          <p class="section__lead">A new color every day &#8212; can you get them all?</p>
+          <div class="color-row" role="group" aria-label="Pick today&#8217;s color">
             <button type="button" class="color-btn" data-color-choice="RED">RED</button>
             <button type="button" class="color-btn" data-color-choice="GREEN">GREEN</button>
             <button type="button" class="color-btn" data-color-choice="BLUE">BLUE</button>
@@ -115,17 +123,25 @@
           <p class="color-feedback" data-color-feedback hidden></p>
         </div>
         </div>
+        </div>
       </section>
 
+      <!-- MYSTERY CLUE -->
       <section class="page-band page-band--clue section" id="clue" aria-labelledby="clue-heading">
+        <div class="page-band__artboard">
+        <img class="sec-decor sec-decor--rotate" style="left:95px;top:-88px;width:232px;aspect-ratio:1" src="assets/decor-star2.svg" alt="" aria-hidden="true" />
+        <img class="sec-decor sec-decor--rotate sec-decor--clue-star-lower" style="left:175px;top:252px;width:232px;aspect-ratio:1" src="assets/decor-star2.svg" alt="" aria-hidden="true" />
+        <img class="sec-decor sec-decor--rotate" style="left:calc(100% - 289px);top:-38px;width:232px;aspect-ratio:1" src="assets/decor-star2.svg" alt="" aria-hidden="true" />
+        <img class="sec-decor" style="left:calc(100% - 290px);top:145px;width:86px;aspect-ratio:86/141" src="assets/decor-note1.svg" alt="" aria-hidden="true" />
+        <img class="sec-decor" style="left:calc(var(--center-x) - 45px);top:calc(64px - 96.15px);width:262px;aspect-ratio:265/195" src="assets/decor-question-marks.svg" alt="" aria-hidden="true" />
         <div class="wrap">
         <div class="section__inner" data-mystery-clue>
           <div class="clue-head">
-            <p class="section__eyebrow">Daily mystery</p>
-            <p class="section__eyebrow" data-clue-day-label>Day — of 13</p>
+            <p class="section__eyebrow">A new clue every day!</p>
+            <p class="section__eyebrow" data-clue-day-label>Day &#8212; of 13</p>
           </div>
           <h2 id="clue-heading" class="section__title">DAILY MYSTERY CLUE</h2>
-          <p class="clue-loading" data-clue-loading>Loading today’s clue…</p>
+          <p class="clue-loading" data-clue-loading>Loading today&#8217;s clue&#8230;</p>
           <p class="clue-text" data-clue-text hidden></p>
           <div class="clue-form">
             <label class="visually-hidden" for="clue-guess">Your guess</label>
@@ -134,32 +150,23 @@
               class="clue-input"
               type="text"
               data-clue-guess
-              placeholder="Your guess…"
+              placeholder="Your guess&#8230;"
               autocomplete="off"
             />
             <button type="button" class="clue-guess-btn" data-clue-guess-btn>Guess!</button>
           </div>
           <p class="clue-share" data-clue-share>
             <span data-clue-share-default>
-              Share your guess → <strong>#DodeeClue</strong> on
+              Share your guess &#8594; <strong>#DodeeClue</strong> on
               <a
                 class="follow-link follow-link--inline"
-                href="https://www.instagram.com/"
+                href="https://www.instagram.com/dodee.our.buddy/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Instagram (opens in a new tab)"
+                aria-label="Dodee on Instagram (opens in a new tab)"
               >
-                <svg
-                  class="follow-link__icon"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  focusable="false"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
-                  />
+                <svg class="follow-link__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                 </svg>
               </a>
               <span class="clue-share__amp" aria-hidden="true"> &amp; </span>
@@ -170,17 +177,8 @@
                 rel="noopener noreferrer"
                 aria-label="TikTok (opens in a new tab)"
               >
-                <svg
-                  class="follow-link__icon"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  focusable="false"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.14-1.99 1.08-3.99 2.75-5.17 1.18-.8 2.64-1.27 4.1-1.28zm.51 7.29c-.11 0-.23.01-.34.01-.51.03-1.01.15-1.45.38-1.13.58-1.85 1.81-1.89 3.05-.05 1.29.51 2.56 1.51 3.33.71.55 1.63.85 2.55.88.93.04 1.87-.23 2.6-.78 1.01-.74 1.62-1.98 1.65-3.25.02-.99-.01-1.98 0-2.97-.79-.05-1.58-.33-2.2-.81-.76-.58-1.25-1.42-1.43-2.32-.35 0-.68.01-1.02.01z"
-                  />
+                <svg class="follow-link__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path fill="currentColor" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.14-1.99 1.08-3.99 2.75-5.17 1.18-.8 2.64-1.27 4.1-1.28zm.51 7.29c-.11 0-.23.01-.34.01-.51.03-1.01.15-1.45.38-1.13.58-1.85 1.81-1.89 3.05-.05 1.29.51 2.56 1.51 3.33.71.55 1.63.85 2.55.88.93.04 1.87-.23 2.6-.78 1.01-.74 1.62-1.98 1.65-3.25.02-.99-.01-1.98 0-2.97-.79-.05-1.58-.33-2.2-.81-.76-.58-1.25-1.42-1.43-2.32-.35 0-.68.01-1.02.01z"/>
                 </svg>
               </a>
             </span>
@@ -188,19 +186,26 @@
           </p>
         </div>
         </div>
+        </div>
       </section>
 
+      <!-- LAUNCH ALERT -->
       <section
         class="page-band page-band--launch section"
         id="launch-alert"
         aria-labelledby="launch-heading"
       >
+        <div class="page-band__artboard">
+        <img class="sec-decor" style="left:calc(var(--center-x) + 48px);top:calc(64px + 33px);width:128px;aspect-ratio:128/80" src="assets/decor-bell.svg" alt="" aria-hidden="true" />
+        <img class="sec-decor" style="left:45.437%;top:-23px;width:125px;aspect-ratio:125/117" src="assets/decor-heart2.svg" alt="" aria-hidden="true" />
+        <img class="sec-decor" style="left:calc(100% - 450px);top:-41px;width:156px;aspect-ratio:159/86" src="assets/decor-leaf.svg" alt="" aria-hidden="true" />
+        <img class="sec-decor" style="left:calc(100% - 232px);top:107px;width:178px;aspect-ratio:178/181" src="assets/decor-note3.svg" alt="" aria-hidden="true" />
+        <img class="sec-decor" style="left:calc(100% - 143px);top:287px;width:103px;aspect-ratio:103/131" src="assets/decor-note4.svg" alt="" aria-hidden="true" />
         <div class="wrap">
         <div class="section__inner" data-launch-form>
           <p class="section__eyebrow">Stay in the loop</p>
           <h2 id="launch-heading" class="section__title">Get the Launch Alert!</h2>
           <form class="launch-form" action="#" method="post" novalidate>
-            <!-- Future: POST to Formspree, Resend, or your API -->
             <div class="launch-row">
               <label class="visually-hidden" for="launch-email">Email</label>
               <input
@@ -217,7 +222,7 @@
               <button type="submit" class="launch-submit" data-launch-submit>Sign me up!</button>
             </div>
             <p id="launch-note" class="launch-note">
-              We’ll email you the morning of April 23rd<br />
+              We&#8217;ll email you the morning of April 23rd<br />
               Unlock a secret bonus activity today!<br />
               No spam. Just Dodee. Unsubscribe anytime.
             </p>
@@ -232,70 +237,38 @@
           </form>
         </div>
         </div>
+        </div>
       </section>
 
+      <!-- FOLLOW -->
       <section class="page-band page-band--follow section" id="follow" aria-labelledby="follow-heading">
+        <div class="page-band__artboard">
+        <img class="sec-decor" style="left:39px;top:-153px;width:293px;aspect-ratio:386/375" src="assets/decor-sun2.svg" alt="" aria-hidden="true" />
+        <img class="sec-decor" style="left:calc(100% - 207px);top:84px;width:88px;aspect-ratio:88/93" src="assets/decor-note5.svg" alt="" aria-hidden="true" />
+        <div class="sec-decor rainbow-group" style="left:calc(50% - 389px);top:1px;width:779px;height:353px" aria-hidden="true">
+          <img src="assets/decor-rainbow.svg" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%" />
+          <img src="assets/decor-rainbow-inner1.svg" alt="" style="position:absolute;top:9%;left:5%;width:90%;height:90%" />
+          <img src="assets/decor-rainbow-inner2.svg" alt="" style="position:absolute;top:20%;left:10%;width:80%;height:80%" />
+        </div>
         <div class="wrap">
         <div class="section__inner">
-          <h2 id="follow-heading" class="section__title">Follow Dodee’s World</h2>
+          <h2 id="follow-heading" class="section__title">Follow Dodee&#8217;s World</h2>
+          <p class="section__lead">New Shorts daily, behind-the-scenes on Instagram, and TikTok content your little one will watch on repeat &#8212; plus original songs on Spotify!</p>
           <nav class="follow-links" aria-label="Social links">
-            <a
-              class="follow-link"
-              href="https://www.youtube.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="YouTube (opens in a new tab)"
-            >
-              <svg class="follow-link__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path
-                  fill="currentColor"
-                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
-                />
-              </svg>
+            <a class="follow-link follow-link--youtube" href="https://www.youtube.com/@Dodee-Our-Buddy" target="_blank" rel="noopener noreferrer" aria-label="Dodee on YouTube (opens in a new tab)">
+              <svg class="follow-link__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
             </a>
-            <a
-              class="follow-link"
-              href="https://www.instagram.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram (opens in a new tab)"
-            >
-              <svg class="follow-link__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path
-                  fill="currentColor"
-                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
-                />
-              </svg>
+            <a class="follow-link follow-link--instagram" href="https://www.instagram.com/dodee.our.buddy/" target="_blank" rel="noopener noreferrer" aria-label="Dodee on Instagram (opens in a new tab)">
+              <svg class="follow-link__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
             </a>
-            <a
-              class="follow-link"
-              href="https://www.tiktok.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="TikTok (opens in a new tab)"
-            >
-              <svg class="follow-link__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path
-                  fill="currentColor"
-                  d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.14-1.99 1.08-3.99 2.75-5.17 1.18-.8 2.64-1.27 4.1-1.28zm.51 7.29c-.11 0-.23.01-.34.01-.51.03-1.01.15-1.45.38-1.13.58-1.85 1.81-1.89 3.05-.05 1.29.51 2.56 1.51 3.33.71.55 1.63.85 2.55.88.93.04 1.87-.23 2.6-.78 1.01-.74 1.62-1.98 1.65-3.25.02-.99-.01-1.98 0-2.97-.79-.05-1.58-.33-2.2-.81-.76-.58-1.25-1.42-1.43-2.32-.35 0-.68.01-1.02.01z"
-                />
-              </svg>
+            <a class="follow-link follow-link--tiktok" href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" aria-label="TikTok (opens in a new tab)">
+              <svg class="follow-link__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
             </a>
-            <a
-              class="follow-link"
-              href="https://open.spotify.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Spotify (opens in a new tab)"
-            >
-              <svg class="follow-link__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path
-                  fill="currentColor"
-                  d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"
-                />
-              </svg>
+            <a class="follow-link follow-link--spotify" href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer" aria-label="Spotify (opens in a new tab)">
+              <svg class="follow-link__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
             </a>
           </nav>
+        </div>
         </div>
         </div>
       </section>
@@ -303,17 +276,21 @@
 
     <footer class="site-footer" role="contentinfo">
       <div class="footer-inner wrap">
+        <img class="footer-logo" src="assets/footer-logo.png" alt="Dodee &amp; Onur" width="123" height="51" />
         <nav class="footer-nav" aria-label="Footer">
-          <a href="privacy.html">Privacy Policy</a>
-          <span class="footer-dot" aria-hidden="true">•</span>
-          <a href="press.html">Press</a>
-          <span class="footer-dot" aria-hidden="true">•</span>
-          <a href="contact.html">Contact</a>
-          <span class="footer-dot" aria-hidden="true">•</span>
-          <span
-            >Presented by
-            <a href="https://www.ebebek.com" target="_blank" rel="noopener noreferrer">ebebek</a></span
-          >
+          <a class="footer-nav__link" href="privacy.html">Privacy Policy</a>
+          <span class="footer-dot" aria-hidden="true">&bull;</span>
+          <a class="footer-nav__link" href="videos.html">Episodes</a>
+          <span class="footer-dot" aria-hidden="true">&bull;</span>
+          <a class="footer-nav__link" href="for-parents.html">For Parents</a>
+          <span class="footer-dot" aria-hidden="true">&bull;</span>
+          <a class="footer-nav__link" href="sponsors.html">Sponsors</a>
+          <span class="footer-dot" aria-hidden="true">&bull;</span>
+          <a class="footer-nav__link" href="press.html">Press</a>
+          <span class="footer-dot" aria-hidden="true">&bull;</span>
+          <a class="footer-nav__link" href="contact.html">Contact</a>
+          <span class="footer-dot" aria-hidden="true">&bull;</span>
+          <span>Presented by <a class="footer-nav__link" href="https://www.ebebek.com" target="_blank" rel="noopener noreferrer">ebebek</a></span>
         </nav>
       </div>
     </footer>

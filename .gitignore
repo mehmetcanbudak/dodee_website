@@ -4,3 +4,6 @@ Thumbs.db
 .env
 .env.*
 !.env.example
+
+# Local tooling / editor cache
+.omc/

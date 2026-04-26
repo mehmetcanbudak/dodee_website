@@ -16,10 +16,12 @@ export async function initMysteryClue(root) {
   if (dayLabel) {
     if (idx >= 1 && idx <= 13) {
       dayLabel.textContent = `Day ${idx} of 13`;
+      dayLabel.hidden = false;
     } else if (idx === 0) {
       dayLabel.textContent = "Coming soon";
+      dayLabel.hidden = false;
     } else {
-      dayLabel.textContent = "Thanks for playing!";
+      dayLabel.hidden = true;
     }
   }
 

@@ -17,6 +17,7 @@ export function initLaunchForm(root) {
     if (status && !status.hidden) {
       status.hidden = true;
       status.textContent = "";
+      status.removeAttribute("data-error");
     }
   });
 

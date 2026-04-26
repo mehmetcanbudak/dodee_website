@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Videos — Dodee &amp; Onur</title>
+    <title>Episodes — Dodee &amp; Onur</title>
     <meta
       name="description"
-      content="Watch Dodee &amp; Onur on YouTube — English for little ones (0–4)."
+      content="Watch Dodee &amp; Onur on YouTube — episode list with dates. English for little ones (0–4)."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,49 +21,163 @@
     <header class="site-shell">
       <nav class="site-nav" aria-label="Primary navigation">
         <div class="site-nav__bar wrap">
-          <a class="site-nav__brand" href="index.html">Dodee &amp; Onur</a>
+          <a class="site-nav__brand" href="index.html"><img src="assets/nav-logo.png" alt="Dodee &amp; Onur" width="77" height="32" /></a>
           <ul class="site-nav__list" role="list">
             <li><a href="about.html">About</a></li>
-            <li><a href="videos.html" aria-current="page">Videos</a></li>
-            <li><a href="press.html">Press</a></li>
+            <li><a href="videos.html" aria-current="page">Episodes</a></li>
+            <li><a href="for-parents.html">For Parents</a></li>
             <li><a href="contact.html">Contact</a></li>
+            <li><a class="nav-cta" href="https://www.youtube.com/@Dodee-Our-Buddy" target="_blank" rel="noopener noreferrer">&#9654; Watch Free</a></li>
           </ul>
         </div>
       </nav>
     </header>
-    <main id="main" class="wrap subpage">
+    <main id="main" class="wrap subpage subpage--episodes" data-episodes-page>
       <a class="back-link" href="index.html">← Back to home</a>
-      <h1>Videos</h1>
-      <p>
-        New episodes of <strong>Dodee &amp; Onur</strong> will appear on YouTube. Episode 1 is set for
-        <strong>23 April 2026</strong>.
-      </p>
-      <p>
-        <!-- Replace href with your real YouTube / YouTube Kids channel when ready -->
-        <strong>Channel:</strong>
-        <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">YouTube</a>
-        (link will go to your show’s channel)
-      </p>
-      <p>
-        For social links and the latest teasers, visit the
-        <a href="index.html#follow">Follow</a> section on the home page.
-      </p>
+
+      <header class="episodes-intro">
+        <p class="episodes-intro__eyebrow">YouTube Kids</p>
+        <h1 id="episodes-heading">Episodes</h1>
+        <p class="episodes-intro__lead">
+          Songs, stories, and gentle English for ages 0–4. Watch on YouTube — new episodes land here with dates and
+          episode numbers as they go live.
+        </p>
+        <div class="episodes-intro__actions">
+          <a
+            class="episodes-channel-btn"
+            href="https://www.youtube.com/@Dodee-Our-Buddy"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="episodes-channel-btn__icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" focusable="false">
+                <path
+                  fill="currentColor"
+                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                />
+              </svg>
+            </span>
+            Open channel
+          </a>
+          <a class="episodes-channel-link" href="index.html#launch-alert">Get launch alert</a>
+        </div>
+      </header>
+
+      <section class="episodes-section" aria-labelledby="episodes-list-heading">
+        <div class="episodes-section__head">
+          <h2 id="episodes-list-heading" class="episodes-section__title">Episode list</h2>
+          <div class="episode-filters" role="group" aria-label="Filter episodes by availability">
+            <button type="button" class="episode-filter" aria-pressed="true" data-filter="all" id="ep-filter-all">
+              All
+            </button>
+            <button type="button" class="episode-filter" aria-pressed="false" data-filter="live" id="ep-filter-live">
+              Out now
+            </button>
+            <button type="button" class="episode-filter" aria-pressed="false" data-filter="upcoming" id="ep-filter-up">
+              Coming soon
+            </button>
+          </div>
+        </div>
+
+        <div class="episode-grid" role="list">
+          <article class="episode-card episode-card--live" data-episode-status="live" role="listitem">
+            <a
+              class="episode-card__media"
+              href="https://www.youtube.com/watch?v=tHlpVMTYDhg"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Watch on YouTube: Teaser — Meet Dodee &amp; Onur"
+            >
+              <img
+                class="episode-card__thumb"
+                src="https://i.ytimg.com/vi/tHlpVMTYDhg/hqdefault.jpg"
+                alt=""
+                width="480"
+                height="360"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="episode-card__play" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" focusable="false">
+                  <circle cx="12" cy="12" r="11" fill="rgba(0,0,0,0.55)" />
+                  <path fill="#fff" d="M9.5 7.5v9l7.5-4.5-7.5-4.5z" />
+                </svg>
+              </span>
+            </a>
+            <div class="episode-card__body">
+              <div class="episode-card__meta">
+                <span class="episode-card__badge">Teaser</span>
+                <span class="episode-card__dot" aria-hidden="true">·</span>
+                <span class="episode-card__date-label">Out now</span>
+              </div>
+              <h3 class="episode-card__title">
+                <a href="https://www.youtube.com/watch?v=tHlpVMTYDhg" target="_blank" rel="noopener noreferrer"
+                  >Meet Dodee &amp; Onur — first look</a
+                >
+              </h3>
+              <p class="episode-card__summary">A colourful hello to the world of Dodee — perfect to share before episode 1.</p>
+            </div>
+          </article>
+
+          <article class="episode-card episode-card--upcoming" data-episode-status="upcoming" role="listitem">
+            <div class="episode-card__media episode-card__media--placeholder" aria-hidden="true">
+              <span class="episode-card__placeholder-icon">&#9835;</span>
+            </div>
+            <div class="episode-card__body">
+              <div class="episode-card__meta">
+                <span class="episode-card__badge episode-card__badge--soon">Episode 1</span>
+                <span class="episode-card__dot" aria-hidden="true">·</span>
+                <time class="episode-card__date" datetime="2026-04-23">23 April 2026</time>
+              </div>
+              <h3 class="episode-card__title">Series premiere</h3>
+              <p class="episode-card__summary">The first full episode arrives on YouTube — sing along and learn gentle English together.</p>
+              <a
+                class="episode-card__cta-subtle"
+                href="https://www.youtube.com/@Dodee-Our-Buddy"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Remind me on YouTube</a
+              >
+            </div>
+          </article>
+
+          <article class="episode-card episode-card--upcoming" data-episode-status="upcoming" role="listitem">
+            <div class="episode-card__media episode-card__media--placeholder" aria-hidden="true">
+              <span class="episode-card__placeholder-icon">&#9835;</span>
+            </div>
+            <div class="episode-card__body">
+              <div class="episode-card__meta">
+                <span class="episode-card__badge episode-card__badge--soon">Episode 2</span>
+                <span class="episode-card__dot" aria-hidden="true">·</span>
+                <span class="episode-card__date episode-card__date--tba">Date TBA</span>
+              </div>
+              <h3 class="episode-card__title">Coming after the premiere</h3>
+              <p class="episode-card__summary">New episodes will be listed here with titles and dates as soon as they’re scheduled.</p>
+            </div>
+          </article>
+        </div>
+      </section>
     </main>
     <footer class="site-footer" role="contentinfo">
       <div class="footer-inner wrap">
+        <img class="footer-logo" src="assets/footer-logo.png" alt="Dodee &amp; Onur" width="123" height="51" />
         <nav class="footer-nav" aria-label="Footer">
-          <a href="privacy.html">Privacy Policy</a>
-          <span class="footer-dot" aria-hidden="true">•</span>
-          <a href="press.html">Press</a>
-          <span class="footer-dot" aria-hidden="true">•</span>
-          <a href="contact.html">Contact</a>
-          <span class="footer-dot" aria-hidden="true">•</span>
-          <span
-            >Presented by
-            <a href="https://www.ebebek.com" target="_blank" rel="noopener noreferrer">ebebek</a></span
-          >
+          <a class="footer-nav__link" href="privacy.html">Privacy Policy</a>
+          <span class="footer-dot" aria-hidden="true">&bull;</span>
+          <a class="footer-nav__link" href="videos.html" aria-current="page">Episodes</a>
+          <span class="footer-dot" aria-hidden="true">&bull;</span>
+          <a class="footer-nav__link" href="for-parents.html">For Parents</a>
+          <span class="footer-dot" aria-hidden="true">&bull;</span>
+          <a class="footer-nav__link" href="sponsors.html">Sponsors</a>
+          <span class="footer-dot" aria-hidden="true">&bull;</span>
+          <a class="footer-nav__link" href="press.html">Press</a>
+          <span class="footer-dot" aria-hidden="true">&bull;</span>
+          <a class="footer-nav__link" href="contact.html">Contact</a>
+          <span class="footer-dot" aria-hidden="true">&bull;</span>
+          <span>Presented by <a class="footer-nav__link" href="https://www.ebebek.com" target="_blank" rel="noopener noreferrer">ebebek</a></span>
         </nav>
       </div>
     </footer>
+    <script type="module" src="js/episodes.js"></script>
   </body>
 </html>
