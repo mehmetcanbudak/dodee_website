@@ -13,7 +13,7 @@
  * body          padding-top reserves space for the fixed nav; flex column + main { flex: 1 } pins footer on short pages.
  */
 
-/* Typography: DynaPuff + Galindo loaded via Google Fonts (see HTML <link>). */
+/* Typography: DynaPuff + Nunito loaded via Google Fonts (see HTML <link>). */
 
 :root {
   --bg: #faf6f0;
@@ -25,21 +25,21 @@
   --sage: #5a7d6c;
   --sage-soft: rgba(90, 125, 108, 0.15);
   --border: rgba(42, 37, 32, 0.12);
-  /* Figma: Main Content / section cards */
+  /* Section card shadow */
   --shadow: 0 18px 20px rgba(42, 37, 32, 0.08);
-  /* Classic link blue on subpage body (Figma #00e) */
-  --link: #00e;
+  /* Link color */
+  --link: #8a4f2e;
   --radius: 1.25rem;
   --radius-sm: 0.75rem;
   --font-display: "DynaPuff", system-ui, sans-serif;
-  --font-body: "Galindo", system-ui, sans-serif;
-  /* ~768px — readable column for main content (.wrap); nav uses wider --nav-inner-max */
+  --font-body: "Nunito", system-ui, sans-serif;
+  /* Content column max-width */
   --max: 48rem;
   --nav-inner-max: 1440px;
   --space: clamp(1.5rem, 5vw, 2.75rem);
   /* Space for fixed nav (approx. one line); wraps on small screens */
   --site-nav-height: 3.25rem;
-  /* Full-width section bands (pastels — easy to tell blocks apart while scrolling) */
+  /* Full-width section band colors */
   --band-teaser: #ffb09e;
   --band-color-game: #adffc9;
   --band-clue: #8fa6e0;
@@ -47,7 +47,7 @@
   --band-follow: #b6c9ff;
   --subpage-bg: #e3eefb;
   --footer-bg: #f2c1c1;
-  /* Wavy seam height between bands (not used above hero) */
+  /* Wavy seam height between bands */
   --section-wave-height: clamp(2.5rem, 7vw, 4rem);
   /* Raise hero + each band’s artboard by exactly one wavy seam (same as .page-band::before height) */
   --section-content-lift: calc(-1 * var(--section-wave-height));
@@ -91,7 +91,7 @@ body {
   background-color: var(--bg);
   min-height: 100vh;
   min-height: 100dvh;
-  /* Short pages (Contact, Privacy): grow main so footer sits at viewport bottom, not on cream gap */
+  /* Flex column ensures footer sits at viewport bottom on short pages */
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
@@ -107,12 +107,7 @@ body:has(main.subpage) {
 }
 
 /*
- * Hero artwork: background-size is relative to the hero box (see #hero). Common values:
- *   cover — fill box, crop overflow (current)
- *   contain — whole image visible, may show letterboxing
- *   100% auto — full width, height scales (or auto 100% for full height)
- *   100% 100% — stretch to box (can distort)
- *   auto — intrinsic size; often use with max-width on a pseudo or different layout
+ * Hero artwork: background covers the hero box.
  */
 
 .skip-link {
@@ -218,7 +213,7 @@ body:has(main.subpage) {
 
 .site-nav__list a {
   font-weight: 400;
-  font-size: 0.95rem; /* Figma ≈ 15.2px */
+  font-size: 0.95rem;
   color: var(--muted);
   text-decoration: none;
   padding: 0.35rem 0.15rem;
@@ -255,8 +250,18 @@ body:has(main.subpage) {
     color 0.18s ease,
     background-color 0.18s ease,
     border-color 0.18s ease,
-    box-shadow 0.18s ease,
-    transform 0.18s ease;
+    box-shadow 0.18s ease;
+}
+
+@media (hover: hover) {
+  .site-nav__list .nav-cta {
+    transition:
+      color 0.18s ease,
+      background-color 0.18s ease,
+      border-color 0.18s ease,
+      box-shadow 0.18s ease,
+      transform 0.18s ease;
+  }
 }
 
 .site-nav__list .nav-cta:hover {
@@ -264,8 +269,13 @@ body:has(main.subpage) {
   background: #e50914;
   border-color: #e50914;
   text-decoration: none;
-  transform: translateY(-1px);
   box-shadow: 0 4px 14px rgba(229, 9, 20, 0.35);
+}
+
+@media (hover: hover) {
+  .site-nav__list .nav-cta:hover {
+    transform: translateY(-1px);
+  }
 }
 
 .site-nav__list .nav-cta:focus-visible {
@@ -281,6 +291,9 @@ body:has(main.subpage) {
       background-color 0.18s ease,
       border-color 0.18s ease,
       box-shadow 0.18s ease;
+  }
+
+  .site-nav__list .nav-cta:hover {
     transform: none;
   }
 }
@@ -443,11 +456,7 @@ body:has(main.subpage) {
   padding-block: clamp(3rem, 10vw, 5rem) clamp(2rem, 6vw, 3.5rem);
 }
 
-/*
- * Full-viewport hero: Figma Home frame 6:7 (1512×868 artboard). Character and copy use % of .hero__frame
- * so the same relations hold when the frame fills one viewport below the nav (not a fixed 868px height).
- * Background is full-bleed; .hero__frame is max 1512px wide and stretches to 100% of the hero’s inner height.
- */
+/* Full-viewport hero section */
 #hero.site-header {
   position: relative;
   /* Above .page-band (2–6): the next section’s ::before (wavy top) is pulled up and would paint
@@ -458,17 +467,17 @@ body:has(main.subpage) {
   max-width: none;
   margin-inline: 0;
   margin-top: calc(-1 * var(--site-nav-height));
-  /* Exactly one screen — dvh for dynamic viewport, svh as fallback / stable measure */
-  min-height: 100dvh;
+  /* Exactly one screen — svh first (fallback), then dvh for dynamic viewport */
   min-height: 100svh;
-  height: 100dvh;
+  min-height: 100dvh;
   height: 100svh;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
   padding-inline: var(--space);
-  /* Reserve the fixed nav height so content lines up with Figma 6:7 (nav sits over the hero) */
+  /* Reserve space for fixed nav */
   padding-top: var(--site-nav-height);
   padding-bottom: env(safe-area-inset-bottom, 0);
   box-sizing: border-box;
@@ -490,7 +499,7 @@ body:has(main.subpage) {
   height: 100%;
   /* Nudge all hero content up by one full wavy seam height (see --section-content-lift) */
   transform: translateY(var(--section-content-lift));
-  /* Figma 1512:868 is the reference for %-positioned children, not a fixed box height in CSS */
+  /* %-positioned children relative to this frame */
 }
 
 .hero__character {
@@ -522,7 +531,7 @@ body:has(main.subpage) {
   z-index: 2;
 }
 
-/* Figma “Home” frame width 1512px — all sec-decor coords are relative to this */
+/* Max artboard width for decorative elements */
 .page-band__artboard {
   position: relative;
   width: 100%;
@@ -534,9 +543,7 @@ body:has(main.subpage) {
   overflow-x: clip;
 }
 
-/* Band z-index: follow last (6). Launch (5) must paint above mystery clue (4) so the heart + leaf
-   (negative top, overlapping clue) are not under the blue band. Clue’s bottom-left star (also
-   straddles launch) is nudged in HTML/CSS so it still reads; see .sec-decor--clue-star-lower. */
+/* Band z-index stacking order */
 .page-band--teaser { z-index: 2; }
 .page-band--color-game { z-index: 3; }
 .page-band--clue { z-index: 4; }
@@ -601,6 +608,55 @@ body:has(main.subpage) {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 80' preserveAspectRatio='none'%3E%3Cpath fill='%23b6c9ff' d='M0 44 C120 12 240 70 360 44 C480 12 600 70 720 44 C840 12 960 70 1080 44 C1110 26 1155 55 1200 44 L1200 80 L0 80 Z'/%3E%3C/svg%3E");
 }
 
+/* Mobile: subtle decorative glow behind each band's card (replaces wide-screen SVG decors that are off-viewport) */
+@media (max-width: 64rem) {
+  .page-band--teaser::after,
+  .page-band--color-game::after,
+  .page-band--clue::after,
+  .page-band--launch::after,
+  .page-band--follow::after {
+    content: "";
+    position: absolute;
+    width: clamp(180px, 50vw, 320px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(40px);
+    opacity: 0.35;
+  }
+
+  .page-band--teaser::after {
+    top: -20px;
+    right: -40px;
+    background: #ff7b5e;
+  }
+
+  .page-band--color-game::after {
+    top: 10px;
+    left: -30px;
+    background: #5aff8e;
+  }
+
+  .page-band--clue::after {
+    bottom: 20px;
+    right: -30px;
+    background: #6b8fd4;
+  }
+
+  .page-band--launch::after {
+    top: -10px;
+    left: -40px;
+    background: #f5b44b;
+  }
+
+  .page-band--follow::after {
+    bottom: 0;
+    right: -20px;
+    background: #8ea8ff;
+  }
+}
+
 /* Hero sits on the open background — text inside white card overlay for legibility */
 .hero__eyebrow,
 .hero__tagline {
@@ -625,7 +681,7 @@ body:has(main.subpage) {
   padding-block: var(--section-pad);
 }
 
-/* Top: same as Figma main column offset (y≈64 in artboard) — no extra top wave inset, that pushed everything down. */
+/* Section card inner padding */
 /* Bottom: space so cards sit clear of the *next* section’s wavy ::before (pulled up with negative top). */
 .page-band.section {
   padding-top: var(--section-pad);
@@ -698,7 +754,7 @@ body:has(main.subpage) {
   margin: 0 0 0.75rem;
 }
 
-/* Figma teaser block title — DynaPuff Bold ~29.6px, centered */
+/* Teaser block title */
 .section__title--teaser {
   font-size: clamp(1.5rem, 2.5vw, 1.85rem);
   font-weight: 700;
@@ -728,7 +784,7 @@ body:has(main.subpage) {
   aspect-ratio: 16 / 9;
   overflow: hidden;
   background: var(--accent-soft);
-  border-radius: 12px; /* Figma teaser embed */
+  border-radius: 12px;
   border: 1px solid var(--border);
 }
 
@@ -748,7 +804,7 @@ body:has(main.subpage) {
   padding: 0 1.5rem;
   font-family: var(--font-body);
   font-weight: 400;
-  font-size: 1rem; /* Figma: 16px on CTA label */
+  font-size: 1rem;
   color: #fff;
   background: var(--accent);
   border: none;
@@ -1173,7 +1229,7 @@ body:has(main.subpage) {
   }
 }
 
-/* Footer — full-width bar matching Figma: simple pink background, centered logo + links */
+/* Footer */
 /* z-index above .page-band--follow (6) so follow decors (e.g. rainbow) do not paint over the footer */
 .site-footer {
   position: relative;
@@ -1211,7 +1267,7 @@ body:has(main.subpage) {
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-size: 0.95rem; /* Figma ≈ 15.2px */
+  font-size: 0.95rem;
   color: var(--muted);
 }
 
@@ -1258,15 +1314,15 @@ body:has(main.subpage) {
 
 .subpage h1 {
   font-family: var(--font-display);
-  font-size: clamp(1.75rem, 4vw, 2.25rem); /* Figma: 36px */
-  line-height: 1.65; /* 59.4px at 36px */
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  line-height: 1.65;
   font-weight: 700;
   margin-top: 0;
 }
 
 .subpage h2 {
   font-family: var(--font-display);
-  font-size: clamp(1.2rem, 2.5vw, 1.45rem); /* Figma: 23.2px */
+  font-size: clamp(1.2rem, 2.5vw, 1.45rem);
   line-height: 1.65;
   font-weight: 700;
   margin-top: 2rem;
@@ -1540,10 +1596,10 @@ main.wrap.subpage.press-page {
 
 .subpage p {
   max-width: 60ch;
-  line-height: 1.65; /* Figma 28.05px / 17px */
+  line-height: 1.65;
 }
 
-/* Figma: inline body links = #00e, underlined */
+/* Inline body links */
 .subpage p a,
 .subpage li a {
   color: var(--link);
@@ -1557,12 +1613,180 @@ main.wrap.subpage.press-page {
   filter: brightness(0.92);
 }
 
+/* ---- Contact page (card grid with email, social, press, sponsor cards) ---- */
+.contact-page .contact-hero {
+  text-align: center;
+  margin-bottom: clamp(1.5rem, 4vw, 2.25rem);
+}
+
+.contact-page .contact-hero h1 {
+  margin-bottom: 0.75rem;
+}
+
+.contact-hero__lead {
+  margin: 0 auto;
+  max-width: 48ch;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.contact-grid {
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 1.75rem);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 40rem) {
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.contact-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: clamp(1.35rem, 3vw, 1.75rem) clamp(1.25rem, 3vw, 1.5rem);
+  box-shadow: 0 8px 16px rgba(42, 37, 32, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-card__icon {
+  font-size: 2.25rem;
+  line-height: 1;
+  margin-bottom: 0.65rem;
+}
+
+.contact-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.2vw, 1.4rem);
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 0.5rem;
+  color: var(--ink);
+}
+
+.contact-card__desc {
+  margin: 0 0 1.15rem;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: none;
+}
+
+.contact-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: auto;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--accent);
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.contact-card__link:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.contact-card__link:focus-visible {
+  outline: 3px solid var(--sage);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.contact-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: auto;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.contact-card__cta:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.contact-card__cta:focus-visible {
+  outline: 3px solid var(--sage);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.contact-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.75rem;
+  align-items: center;
+  margin-top: auto;
+}
+
+.contact-social .follow-link {
+  min-width: 2.875rem;
+  min-height: 2.875rem;
+  padding: 0.45rem;
+  background: none;
+  border-radius: 0.5rem;
+  opacity: 0.9;
+  transition: transform 0.22s ease, opacity 0.22s ease, color 0.22s ease;
+}
+
+.contact-social .follow-link:hover {
+  opacity: 1;
+  background: none;
+  background-color: transparent;
+  transform: scale(1.08);
+}
+
+.contact-social .follow-link__icon {
+  width: 1.9rem;
+  height: 1.9rem;
+}
+
+/* Brand colors for social icons on contact page (mirrors .follow-links rules) */
+.contact-social .follow-link--youtube { color: #ff0303; }
+.contact-social .follow-link--youtube:hover { color: #c40000; }
+.contact-social .follow-link--instagram { color: #e4405f; }
+.contact-social .follow-link--instagram:hover { color: #b32d6f; }
+.contact-social .follow-link--tiktok { color: var(--ink); }
+.contact-social .follow-link--tiktok:hover { color: #000; }
+.contact-social .follow-link--spotify { color: #1db954; }
+.contact-social .follow-link--spotify:hover { color: #14833c; }
+
+.contact-social .follow-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 6px;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-social .follow-link {
+    transition: opacity 0.2s ease, color 0.2s ease;
+  }
+
+  .contact-social .follow-link:hover,
+  .contact-social .follow-link:active {
+    transform: none;
+  }
+}
+
+.contact-page.subpage p {
+  max-width: none;
+}
+
 .back-link {
   display: inline-block;
   margin-bottom: 1.5rem;
   font-weight: 400;
-  font-size: 1.0625rem; /* 17px — Figma subpage back link */
-  line-height: 1.65; /* 28.05/17 */
+  font-size: 1.0625rem;
+  line-height: 1.65;
   color: var(--accent);
   text-decoration: none;
 }
@@ -2099,10 +2323,7 @@ main.subpage.subpage--episodes {
   }
 }
 
-/*
- * Section decorative elements — absolute inside .page-band__artboard (Figma 1512).
- * --center-x = left edge of 768px column = calc(50% - 24rem) on the artboard
- */
+/* Section decorative elements — absolute inside .page-band__artboard */
 
 .page-band__artboard .wrap {
   position: relative;
@@ -2115,7 +2336,7 @@ main.subpage.subpage--episodes {
   z-index: var(--z-sec-decor);
 }
 
-/* Figma home clue stars: ~-27.69° on star2 instances */
+/* Figma home clue stars: ~-27.69° rotation */
 .sec-decor--rotate {
   transform: rotate(-27.69deg);
 }
@@ -2147,7 +2368,7 @@ main.subpage.subpage--episodes {
   }
 }
 
-/* ---- Hero copy card (Figma: 412×110 @ ~44,700 in 1512×868 frame) ---- */
+/* Hero copy card */
 .hero__content {
   position: absolute;
   z-index: 1;
@@ -2166,20 +2387,20 @@ main.subpage.subpage--episodes {
 .hero__content .hero__eyebrow {
   text-align: center;
   padding-top: 0;
-  font-size: 1rem; /* Figma 16px */
-  letter-spacing: 0.14em; /* Figma 2.24px at 16px */
+  font-size: 1rem;
+  letter-spacing: 0.14em;
   line-height: 1.65;
   color: var(--sage);
 }
 
 .hero__content .hero__tagline {
   color: var(--muted);
-  font-size: clamp(1.125rem, 2.2vw, 1.5rem); /* Figma 24px at desktop */
-  line-height: 1.35; /* 32.4px/24 */
+  font-size: clamp(1.125rem, 2.2vw, 1.5rem);
+  line-height: 1.35;
   max-width: none;
 }
 
-/* Narrow viewports: center character + copy card (Figma 6:7 proportions via %) */
+/* Narrow viewports: center character + copy card */
 @media (max-width: 40rem) {
   .hero__frame {
     min-height: 0;

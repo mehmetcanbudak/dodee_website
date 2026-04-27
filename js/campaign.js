@@ -65,17 +65,15 @@ export function getClueDayIndex(now = new Date()) {
 
 /** @typedef {'RED' | 'GREEN' | 'BLUE'} DodeeColor */
 
-/** Simple deterministic color from Istanbul date */
+/** Simple deterministic color from Istanbul date — uses day-of-year for better distribution */
 export function getColorOfDay(now = new Date()) {
   const ymd = getIstanbulYmd(now);
-  let hash = 0;
-  for (let i = 0; i < ymd.length; i++) {
-    hash = (hash * 31 + ymd.charCodeAt(i)) | 0;
-  }
-  const mod = Math.abs(hash) % 3;
+  const [y, m, d] = ymd.split("-").map(Number);
+  // Day-of-year approximation for good color cycling
+  const dayOfYear = Math.floor((new Date(y, m - 1, d) - new Date(y, 0, 0)) / 86400000);
   /** @type {const} */
   const colors = ["RED", "GREEN", "BLUE"];
-  return colors[mod];
+  return colors[dayOfYear % 3];
 }
 
 export function getLaunchInstantMs() {

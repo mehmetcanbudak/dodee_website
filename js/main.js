@@ -8,7 +8,10 @@ document.querySelectorAll("[data-color-game]").forEach((el) => {
 });
 
 document.querySelectorAll("[data-mystery-clue]").forEach((el) => {
-  if (el instanceof HTMLElement) void initMysteryClue(el);
+  if (el instanceof HTMLElement) {
+    // fire and forget — errors caught inside initMysteryClue
+    initMysteryClue(el).catch(() => {});
+  }
 });
 
 document.querySelectorAll("[data-launch-form]").forEach((el) => {

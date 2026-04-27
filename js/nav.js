@@ -91,11 +91,35 @@ function init() {
   );
 
   document.addEventListener("keydown", (e) => {
-    if (e.key !== "Escape" || !isMobileNav() || !nav.classList.contains("is-menu-open")) {
+    if (!nav.classList.contains("is-menu-open")) return;
+
+    // Close on Escape
+    if (e.key === "Escape") {
+      e.preventDefault();
+      closeMenu();
       return;
     }
-    e.preventDefault();
-    closeMenu();
+
+    // Focus trap: keep Tab within the mobile menu
+    if (e.key === "Tab" && isMobileNav()) {
+      const focusable = list.querySelectorAll(
+        'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    }
   });
 
   const mq = window.matchMedia(MOBILE_NAV_QUERY);

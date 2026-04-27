@@ -48,12 +48,16 @@ function initEpisodeFilters(root) {
     } else if (e.key === "End") {
       e.preventDefault();
       next = buttons.length - 1;
+    } else if (e.key === "Enter" || e.key === " ") {
+      // Activate the currently focused button
+      e.preventDefault();
+      const value = document.activeElement?.getAttribute("data-filter");
+      if (value) applyFilter(value);
+      return;
     } else {
       return;
     }
     buttons[next].focus();
-    const value = buttons[next].getAttribute("data-filter");
-    if (value) applyFilter(value);
   });
 
   applyFilter("all");

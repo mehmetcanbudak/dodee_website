@@ -94,8 +94,6 @@ export function initColorGame(root) {
         updateStreakDisplay();
         showFeedback("Yes! That’s Dodee’s color today!", false);
       } else {
-        writeStreak(0);
-        updateStreakDisplay();
         showFeedback("Not quite — try another color!", true);
       }
     });

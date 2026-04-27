@@ -31,13 +31,8 @@ export async function initMysteryClue(root) {
     if (!res.ok) throw new Error("clues fetch failed");
     clues = await res.json();
   } catch {
-    try {
-      const res = await fetch(new URL("data/clues.json", window.location.href));
-      if (!res.ok) throw new Error("clues fetch failed");
-      clues = await res.json();
-    } catch {
-      clues = ["Clues will appear when the campaign starts. Check back soon!"];
-    }
+    console.warn("[mystery-clue] Could not load clues.json");
+    clues = ["Clues will appear when the campaign starts. Check back soon!"];
   }
   if (!Array.isArray(clues)) {
     clues = ["Clues will appear when the campaign starts. Check back soon!"];
