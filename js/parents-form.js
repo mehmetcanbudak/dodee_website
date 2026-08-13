@@ -39,9 +39,12 @@ export function initParentsForm(root) {
     const emailVal = email instanceof HTMLInputElement ? email.value.trim() : "";
     const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal);
     const age = form.querySelector("#fp-age");
-    const lang = form.querySelector("#fp-lang");
-    const ageVal = age instanceof HTMLSelectElement ? age.value : "";
-    const langVal = lang instanceof HTMLSelectElement ? lang.value : "";
+    const ageVal =
+      age instanceof HTMLSelectElement
+        ? age.value
+        : age instanceof HTMLInputElement
+          ? age.value.trim()
+          : "";
 
     let firstInvalid = null;
 
@@ -58,15 +61,9 @@ export function initParentsForm(root) {
       }
     }
     if (!ageVal) {
-      if (age instanceof HTMLSelectElement) {
+      if (age instanceof HTMLSelectElement || age instanceof HTMLInputElement) {
         age.setAttribute("aria-invalid", "true");
         firstInvalid = firstInvalid || age;
-      }
-    }
-    if (!langVal) {
-      if (lang instanceof HTMLSelectElement) {
-        lang.setAttribute("aria-invalid", "true");
-        firstInvalid = firstInvalid || lang;
       }
     }
 
