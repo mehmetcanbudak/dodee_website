@@ -136,15 +136,25 @@ async function probeMedia() {
   try {
     const response = await page.goto(`${origin}/index.html`, { waitUntil: 'networkidle', timeout: 20000 });
     report.headers = await response.allHeaders();
-    await page.locator('iframe').scrollIntoViewIfNeeded();
+    const activate = page.getByRole('button', { name: 'Play teaser', exact: true });
+    await activate.focus();
+    await activate.press('Enter');
+    assert.equal(await page.locator('iframe').evaluate(el => el === document.activeElement), true, 'Facade activation moves focus to the requested player');
     const frame = page.frameLocator('iframe');
-    const play = frame.getByRole('button', { name: /^(Play video|Videoyu oynat)$/i });
-    await play.focus();
-    await play.press('Enter');
     const video = frame.locator('video');
     await video.waitFor();
     const mediaFrame = page.frames().find(item => item.url().includes('youtube-nocookie.com/embed/'));
-    await mediaFrame.waitForFunction(() => { const video = document.querySelector('video'); return video && video.currentTime > 2 && !video.paused; }, null, { timeout: 20000 });
+    try {
+      await mediaFrame.waitForFunction(() => { const video = document.querySelector('video'); return video && video.currentTime > 2 && !video.paused; }, null, { timeout: 10000 });
+      report.activation = 'facade-play-button';
+    } catch {
+      // Some providers/browser policies require a second gesture inside the player.
+      const play = frame.getByRole('button', { name: /^(Play video|Videoyu oynat)$/i });
+      await play.focus();
+      await play.press('Enter');
+      await mediaFrame.waitForFunction(() => { const video = document.querySelector('video'); return video && video.currentTime > 2 && !video.paused; }, null, { timeout: 20000 });
+      report.activation = 'facade-then-provider-play-button';
+    }
     report.playback = 'passed';
     report.video = await video.evaluate(video => ({ time: video.currentTime, duration: video.duration, paused: video.paused, readyState: video.readyState }));
     report.captionControls = await frame.locator('button').evaluateAll(buttons => buttons.filter(button => /caption|altyaz/i.test(button.getAttribute('aria-label') || '')).map(button => ({ label: button.getAttribute('aria-label'), visible: button.checkVisibility({ checkOpacity: true, checkVisibilityCSS: true }) && !button.closest('[aria-hidden=true]'), disabled: button.disabled || button.getAttribute('aria-disabled') === 'true' })));
@@ -236,6 +246,7 @@ try {
         // Preserve normal visual evidence before the temporary contrast paint probe.
         if (width === 390 || width === 1440 || width === 1512) {
           await page.screenshot({ path: path.join(outputDir, `${route}-${width}-${motion}.png`), fullPage: true });
+          if (route === 'index') await page.locator('#teaser').screenshot({ path: path.join(outputDir, `teaser-${width}-${motion}.png`) });
         }
         if (motion === 'reduce' && (width === 390 || width === 1440 || width === 1512)) checks.pixelContrast = await pixelContrast(page, checks);
         recordAudit(`${motion} ${width}px ${route}`, checks, { width, route, motion });
@@ -268,6 +279,8 @@ try {
   await accessiblePage.getByRole('button', { name: 'Updates', exact: true }).click();
   recordAudit('Selected filter', await auditWithContrast(accessiblePage), { state: 'selected-filter' });
   await accessiblePage.goto(`${origin}/index.html`, { waitUntil: 'networkidle' });
+  await accessiblePage.getByRole('button', { name: 'Play teaser', exact: true }).focus();
+  recordAudit('Focused video facade', await auditWithContrast(accessiblePage), { state: 'video-facade-focus' });
   const correctColor = await accessiblePage.evaluate(async () => (await import('/js/campaign.js')).getColorOfDay(new Date()));
   const wrongColor = ['RED', 'GREEN', 'BLUE'].find(color => color !== correctColor);
   await accessiblePage.getByRole('button', { name: wrongColor, exact: true }).click();
@@ -290,20 +303,26 @@ try {
   await nojsPage.goto(`${origin}/videos.html`);
   assert.equal(await nojsPage.getByRole('link', { name: 'About', exact: true }).isVisible(), true, 'No-JS mobile navigation must remain usable');
   assert.equal(await nojsPage.locator('.episode-filters').isHidden(), true, 'No-JS filters must stay hidden');
+  await nojsPage.goto(`${origin}/index.html`);
+  assert.equal(await nojsPage.locator('[data-media-play]').isHidden(), true, 'No-JS facade button must remain hidden');
+  assert.equal(await nojsPage.locator('iframe').count(), 0, 'No-JS homepage must not load a third-party player');
+  assert.equal(await nojsPage.getByRole('link', { name: 'Watch teaser on YouTube', exact: true }).getAttribute('href'), 'https://www.youtube.com/watch?v=tHlpVMTYDhg');
   await nojs.close();
 
   const context = await browser.newContext({ viewport: { width: 390, height: 700 }, reducedMotion: 'reduce' });
   const page = await context.newPage();
   const pageErrors = [];
   const typographyRequests = [];
+  const thirdPartyRequests = [];
   page.on('request', request => { if (['font', 'stylesheet'].includes(request.resourceType())) typographyRequests.push(request.url()); });
+  page.on('request', request => { if (!request.url().startsWith(origin + '/')) thirdPartyRequests.push(request.url()); });
   page.on('pageerror', error => pageErrors.push(error.message));
   await page.goto(`${origin}/videos.html`);
   await page.evaluate(() => document.fonts.ready);
   assert.ok(typographyRequests.every(url => url.startsWith(origin + '/')), 'Typography resources must be hosted locally');
   const loadedFonts = await page.evaluate(() => [...document.fonts].filter(font => font.status === 'loaded').map(font => font.family.replace(/[\"']/g, '')));
   assert.ok(loadedFonts.includes('DynaPuff') && loadedFonts.includes('Nunito'), 'Both local font families must load under native CSP');
-  results.push({ selfHostedFonts: 'passed', typographyRequests });
+  results.push({ selfHostedFonts: 'passed', typographyRequests: [...typographyRequests] });
   const toggle = page.locator('#primary-nav-toggle');
   assert.equal(await page.locator('#primary-nav-list').evaluate(el => el.inert), true);
   await toggle.click();
@@ -324,6 +343,24 @@ try {
   await page.getByRole('button', { name: 'RED', exact: true }).click();
   assert.ok(await page.locator('[data-color-feedback]').textContent());
   assert.equal(await page.locator('input[type=email]').count(), 0);
+  const media = page.locator('[data-media]');
+  const mediaButton = page.getByRole('button', { name: 'Play teaser', exact: true });
+  await mediaButton.scrollIntoViewIfNeeded();
+  assert.equal(await page.locator('iframe').count(), 0);
+  assert.deepEqual(thirdPartyRequests, [], 'Initial homepage and teaser preview must make no third-party requests');
+  const previewBox = await media.boundingBox();
+  // Actual playback is a separate opt-in probe. This deterministic check covers
+  // native keyboard activation and focus even when the provider is unavailable.
+  await page.route('https://www.youtube-nocookie.com/**', route => route.abort());
+  const requestedPlayer = page.waitForRequest(request => request.url().startsWith('https://www.youtube-nocookie.com/embed/'));
+  await mediaButton.focus();
+  await mediaButton.press('Enter');
+  await requestedPlayer;
+  assert.equal(await page.locator('iframe').count(), 1);
+  assert.equal(await page.locator('iframe').evaluate(el => el === document.activeElement), true);
+  const playerBox = await media.boundingBox();
+  assert.ok(Math.abs(previewBox.width - playerBox.width) < 1 && Math.abs(previewBox.height - playerBox.height) < 1, 'Player activation must preserve the reserved preview size');
+  results.push({ mediaFacade: 'passed', initialThirdPartyRequests: 0, keyboardActivation: 'passed', playerFocus: 'passed', preservedMediaSize: 'passed' });
   await page.setViewportSize({ width: 320, height: 568 });
   await page.evaluate(() => { document.documentElement.style.fontSize = '200%'; });
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, '200% text must reflow');
