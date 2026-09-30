@@ -50,5 +50,58 @@
     "immutableUrl": "https://dodee-website-a65txfj1t-mehmetcan-budaks-projects.vercel.app",
     "publicAlias": "https://dodee-website.vercel.app",
     "status": "success"
+  },
+  "mergedMainRun": {
+    "id": 36761795642,
+    "runUrl": "https://github.com/mehmetcanbudak/dodee_website/actions/runs/36761795642",
+    "commit": "2a0091d7227a62e676296438f5a4bd0ede3267f0",
+    "attempt": 1,
+    "status": "completed",
+    "conclusion": "success",
+    "createdAt": "2026-09-30T18:53:27Z",
+    "updatedAt": "2026-09-30T19:07:29Z",
+    "jobs": [
+      {
+        "id": 110045947506,
+        "name": "performance",
+        "conclusion": "success",
+        "startedAt": "2026-09-30T18:53:32Z",
+        "completedAt": "2026-09-30T18:54:52Z",
+        "url": "https://github.com/mehmetcanbudak/dodee_website/actions/runs/36761795642/job/110045947506"
+      },
+      {
+        "id": 110045947684,
+        "name": "browser (firefox)",
+        "conclusion": "success",
+        "startedAt": "2026-09-30T18:53:31Z",
+        "completedAt": "2026-09-30T19:07:28Z",
+        "url": "https://github.com/mehmetcanbudak/dodee_website/actions/runs/36761795642/job/110045947684"
+      },
+      {
+        "id": 110045947772,
+        "name": "check",
+        "conclusion": "success",
+        "startedAt": "2026-09-30T18:53:31Z",
+        "completedAt": "2026-09-30T18:53:44Z",
+        "url": "https://github.com/mehmetcanbudak/dodee_website/actions/runs/36761795642/job/110045947772"
+      },
+      {
+        "id": 110045947794,
+        "name": "browser (webkit)",
+        "conclusion": "success",
+        "startedAt": "2026-09-30T18:53:31Z",
+        "completedAt": "2026-09-30T19:05:04Z",
+        "url": "https://github.com/mehmetcanbudak/dodee_website/actions/runs/36761795642/job/110045947794"
+      },
+      {
+        "id": 110045947935,
+        "name": "browser (chromium)",
+        "conclusion": "success",
+        "startedAt": "2026-09-30T18:53:31Z",
+        "completedAt": "2026-09-30T18:55:49Z",
+        "url": "https://github.com/mehmetcanbudak/dodee_website/actions/runs/36761795642/job/110045947935"
+      }
+    ],
+    "retryNote": "Completed on the first attempt after slow Ubuntu/browser installation. No jobs were canceled or rerun."
   }
 }
