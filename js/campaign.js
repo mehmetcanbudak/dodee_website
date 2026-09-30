@@ -1,10 +1,9 @@
 /**
- * Launch + campaign config (Europe/Istanbul).
- * Adjust CAMPAIGN_START_YMD / CLUE_END_YMD if the clue window changes.
+ * Archived clue campaign config (Europe/Istanbul).
+ * These dates document the completed April campaign. The public archive is static;
+ * changing the clock or these constants does not activate a new campaign.
+ * A future campaign needs approved dates and content plus a new implementation.
  */
-
-/** Episode 1 air time in Turkey */
-export const LAUNCH_ISO = "2026-04-23T09:00:00+03:00";
 
 /** First day of the 13-day clue run (inclusive), Istanbul calendar date */
 export const CAMPAIGN_START_YMD = "2026-04-10";
@@ -13,18 +12,21 @@ export const CAMPAIGN_START_YMD = "2026-04-10";
 export const CLUE_END_YMD = "2026-04-22";
 
 const TZ = "Europe/Istanbul";
+const dateFormatter = new Intl.DateTimeFormat("en", {
+  timeZone: TZ,
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+});
 
 /**
  * @param {Date} [now]
  * @returns {string} YYYY-MM-DD in Istanbul
  */
 export function getIstanbulYmd(now = new Date()) {
-  return new Intl.DateTimeFormat("en-CA", {
-    timeZone: TZ,
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).format(now);
+  const parts = dateFormatter.formatToParts(now);
+  const part = (type) => parts.find((value) => value.type === type).value;
+  return `${part("year")}-${part("month")}-${part("day")}`;
 }
 
 /**
@@ -49,7 +51,8 @@ function ymdToUtcNoonMs(ymd) {
 }
 
 /**
- * Clue day index: 0 = before campaign, 1–13 = active, 14 = after last clue day
+ * Historical clue day index: 0 = before its window, 1–13 = its clue days,
+ * 14 = after the last day. This does not enable the archived public feature.
  * @param {Date} [now]
  * @returns {number}
  */
@@ -65,17 +68,12 @@ export function getClueDayIndex(now = new Date()) {
 
 /** @typedef {'RED' | 'GREEN' | 'BLUE'} DodeeColor */
 
-/** Simple deterministic color from Istanbul date — uses day-of-year for better distribution */
+/** The same Istanbul calendar day has the same color in every visitor's timezone. */
 export function getColorOfDay(now = new Date()) {
   const ymd = getIstanbulYmd(now);
   const [y, m, d] = ymd.split("-").map(Number);
-  // Day-of-year approximation for good color cycling
-  const dayOfYear = Math.floor((new Date(y, m - 1, d) - new Date(y, 0, 0)) / 86400000);
+  const dayOfYear = (Date.UTC(y, m - 1, d) - Date.UTC(y, 0, 0)) / 86400000;
   /** @type {const} */
   const colors = ["RED", "GREEN", "BLUE"];
   return colors[dayOfYear % 3];
-}
-
-export function getLaunchInstantMs() {
-  return Date.parse(LAUNCH_ISO);
 }

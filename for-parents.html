@@ -6,25 +6,23 @@
     <title>For Parents — Dodee &amp; Onur</title>
     <meta
       name="description"
-      content="Join the Dodee family for personalized weekly emails: episode summaries, activities, and tips tailored to your child’s age (0–4)."
+      content="Explore Dodee &amp; Onur together: songs, playful English, and ideas for parents and caregivers."
     />
     <meta property="og:title" content="For Parents — Dodee &amp; Onur" />
-    <meta property="og:description" content="Join the Dodee family for personalized weekly emails." />
+    <meta property="og:description" content="Songs, playful English, and ideas for parents and caregivers." />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_GB" />
     <meta property="og:url" content="https://dodee-website.vercel.app/for-parents.html" />
     <meta property="og:image" content="https://dodee-website.vercel.app/assets/hero-characters.png" />
+    <meta property="og:image:alt" content="Dodee and Onur" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#faf6f0" />
     <link rel="canonical" href="https://dodee-website.vercel.app/for-parents.html" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;700&family=Nunito:wght@400;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preload" href="assets/fonts/dynapuff-latin-v9.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/nunito-latin-v32.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="css/fonts.css" />
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="icon" href="assets/nav-logo.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="assets/nav-logo.png" type="image/png" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -67,235 +65,55 @@
         </div>
       </nav>
     </header>
-    <main id="main" class="wrap subpage subpage--parents">
+    <script src="js/nav.js"></script>
+    <main id="main" tabindex="-1" class="wrap subpage subpage--parents">
       <a class="back-link" href="index.html">← Back to home</a>
 
       <header class="for-parents__intro">
-        <h1>Stay in Dodee&rsquo;s Loop</h1>
+        <h1>Enjoy Dodee Together</h1>
         <p class="for-parents__lead">
-          Get personalized weekly emails tailored to your child&rsquo;s age &mdash; episode summaries,
-          activity ideas, and exclusive brand offers from our partners.
+          Songs, stories, and simple ways for parents and caregivers to join in.
         </p>
       </header>
 
       <div class="for-parents__grid">
-        <div class="for-parents__panel for-parents__panel--form fp-card fp-card--form" data-parents-form>
-            <h2 class="fp-card__title fp-card__title--first">&#11088; Join the Dodee Family</h2>
-            <p class="fp-card__lede">
-              Tell us about your little one and we&rsquo;ll send you perfectly timed, age-matched content
-              every week &mdash; plus first access to events and special episodes!
-            </p>
-
-            <form class="fp-form" action="#" method="post" novalidate>
-              <div class="fp-field">
-                <label class="fp-label" for="fp-name">Your First Name</label>
-                <input
-                  class="fp-input"
-                  type="text"
-                  id="fp-name"
-                  name="first_name"
-                  autocomplete="given-name"
-                  placeholder="Your name"
-                  required
-                />
-              </div>
-              <div class="fp-field">
-                <label class="fp-label" for="fp-email">Email Address</label>
-                <input
-                  class="fp-input"
-                  type="email"
-                  id="fp-email"
-                  name="email"
-                  autocomplete="email"
-                  placeholder="your@email.com"
-                  required
-                />
-              </div>
-              <div class="fp-field-row">
-                <div class="fp-field">
-                  <label class="fp-label" for="fp-age">Child&rsquo;s Age</label>
-                  <div class="fp-select-wrap">
-                    <select class="fp-select" id="fp-age" name="child_age" required>
-                      <option value="" selected disabled hidden>Select age&hellip;</option>
-                      <option value="0-1">0&ndash;1</option>
-                      <option value="1-2">1&ndash;2</option>
-                      <option value="2-3">2&ndash;3</option>
-                      <option value="3-4">3&ndash;4</option>
-                      <option value="4-6">4&ndash;6</option>
-                      <option value="expecting">Expecting / baby on the way</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="fp-field">
-                  <label class="fp-label" for="fp-lang">Language at Home</label>
-                  <div class="fp-select-wrap">
-                    <select class="fp-select" id="fp-lang" name="language" required>
-                      <option value="" selected disabled hidden>Select&hellip;</option>
-                      <option value="english">English</option>
-                      <option value="turkish">Turkish</option>
-                      <option value="bilingual">Bilingual</option>
-                      <option value="other">Other</option>
-                      <option value="na">Prefer not to say</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="fp-field">
-                <label class="fp-label" for="fp-love"
-                  >What does your little one love? <span class="fp-optional">(optional)</span></label
-                >
-                <div class="fp-select-wrap">
-                  <select class="fp-select" id="fp-love" name="interest">
-                    <option value="" selected>Select their favorite&hellip;</option>
-                    <option value="music">Music &amp; songs</option>
-                    <option value="colors">Colors &amp; shapes</option>
-                    <option value="animals">Animals</option>
-                    <option value="stories">Stories &amp; books</option>
-                    <option value="movement">Movement &amp; play</option>
-                    <option value="mix">A mix of everything</option>
-                  </select>
-                </div>
-              </div>
-
-              <fieldset class="fp-prefs">
-                <legend class="visually-hidden">Email preferences</legend>
-                <label class="fp-check">
-                  <input type="checkbox" name="pref_offers" value="1" />
-                  <span class="fp-check__box" aria-hidden="true"></span>
-                  <span class="fp-check__text"
-                    ><span class="fp-check__icon" aria-hidden="true">&#9993;&#65039;</span> I&rsquo;d love
-                    exclusive offers from Dodee&rsquo;s trusted brand partners (ebebek, humm organic &amp;
-                    more)</span
-                  >
-                </label>
-                <label class="fp-check">
-                  <input type="checkbox" name="pref_events" value="1" />
-                  <span class="fp-check__box" aria-hidden="true"></span>
-                  <span class="fp-check__text"
-                    ><span class="fp-check__icon" aria-hidden="true">&#127881;</span> Notify me about live
-                    events and special appearances with Dodee &amp; Onur</span
-                  >
-                </label>
-                <label class="fp-check">
-                  <input type="checkbox" name="pref_weekly" value="1" checked />
-                  <span class="fp-check__box" aria-hidden="true"></span>
-                  <span class="fp-check__text"
-                    ><span class="fp-check__icon" aria-hidden="true">&#128231;</span> Send me the weekly
-                    episode email with activities and learning tips</span
-                  >
-                </label>
-              </fieldset>
-
-              <p
-                class="fp-status"
-                data-parents-status
-                role="status"
-                aria-live="polite"
-                hidden
-              ></p>
-
-              <button type="submit" class="fp-submit" data-parents-submit>
-                &#11088; Join the Dodee Family &mdash; It&rsquo;s Free!
-              </button>
-            </form>
-
-            <p class="fp-trust">
-              No spam, ever. Unsubscribe anytime.
-              <a href="privacy.html">Privacy Policy</a>
-            </p>
-        </div>
-
-        <section
-          class="for-parents__panel for-parents__panel--receive fp-card fp-card--receive"
-          aria-labelledby="receive-heading"
-        >
-            <h2 id="receive-heading" class="fp-receive__heading">
-              &#128231; What you&rsquo;ll receive each week
-            </h2>
-            <ul class="fp-receive__list" role="list">
-              <li>This week&rsquo;s episode summary + learning focus</li>
-              <li>3 printable home activities tied to the episode</li>
-              <li>Age-specific language tip from our experts</li>
-              <li>Exclusive offers from our trusted brand partners</li>
-              <li>First access to events and live shows</li>
-            </ul>
+        <section class="for-parents__panel for-parents__panel--form fp-card fp-card--form" aria-labelledby="family-heading">
+          <h2 id="family-heading" class="fp-card__title fp-card__title--first">Stay in Dodee’s Loop</h2>
+          <p class="fp-card__lede">Find videos and channel updates on YouTube.</p>
+          <a class="fp-submit" href="https://www.youtube.com/@Dodee-Our-Buddy" target="_blank" rel="noopener noreferrer">Visit Dodee on YouTube</a>
+          <p>See the <a href="contact.html">contact page</a> for published contact information.</p>
         </section>
 
         <section class="for-parents__panel for-parents__panel--why fp-card fp-card--why" aria-labelledby="why-heading">
-            <h2 id="why-heading" class="fp-why__title">Why Parents &#10084;&#65039; Dodee</h2>
-            <ul class="fp-why" role="list">
-              <li class="fp-why__item">
-                <span class="fp-why__emoji" aria-hidden="true">&#129504;</span>
-                <div>
-                  <h3 class="fp-why__item-title">Expert-Designed Content</h3>
-                  <p>
-                    Every episode reviewed by clinical psychologists and child development specialists
-                    &mdash; so you can press play with complete confidence.
-                  </p>
-                </div>
-              </li>
-              <li class="fp-why__item">
-                <span class="fp-why__emoji" aria-hidden="true">&#127757;</span>
-                <div>
-                  <h3 class="fp-why__item-title">Early English = Lifelong Advantage</h3>
-                  <p>
-                    Ages 0&ndash;4 are the golden window for language acquisition. Dodee makes the most of
-                    every minute of it.
-                  </p>
-                </div>
-              </li>
-              <li class="fp-why__item">
-                <span class="fp-why__emoji" aria-hidden="true">&#128241;</span>
-                <div>
-                  <h3 class="fp-why__item-title">Screen Time Worth Having</h3>
-                  <p>
-                    Interactive, active engagement &mdash; children respond, sing, and correct Dodee. This
-                    is participatory, not passive viewing.
-                  </p>
-                </div>
-              </li>
-              <li class="fp-why__item">
-                <span class="fp-why__emoji" aria-hidden="true">&#128176;</span>
-                <div>
-                  <h3 class="fp-why__item-title">100% Free, Always</h3>
-                  <p>
-                    No subscriptions, no paywalls. Dodee&rsquo;s adventures are free for every child,
-                    everywhere, forever.
-                  </p>
-                </div>
-              </li>
-            </ul>
+          <h2 id="why-heading" class="fp-why__title">Explore Dodee’s World</h2>
+          <ul class="fp-why" role="list">
+            <li class="fp-why__item">
+              <h3 class="fp-why__item-title">Playful English words and phrases</h3>
+            </li>
+            <li class="fp-why__item">
+              <h3 class="fp-why__item-title">Songs to sing together</h3>
+            </li>
+            <li class="fp-why__item">
+              <h3 class="fp-why__item-title">Moments for caregivers to join in</h3>
+            </li>
+            <li class="fp-why__item">
+              <h3 class="fp-why__item-title">Watch on YouTube</h3>
+            </li>
+          </ul>
+          <h2 class="fp-receive__heading">Try together</h2>
+          <ul class="fp-receive__list" role="list">
+            <li>Sing along with a familiar song</li>
+            <li>Name the colors you see</li>
+            <li>Repeat a favorite word</li>
+            <li>Talk about Dodee’s adventure</li>
+          </ul>
         </section>
 
-        <section class="for-parents__panel for-parents__panel--age fp-card fp-card--age" aria-labelledby="age-heading">
-            <h2 id="age-heading" class="fp-age__title">&#128118; Content by Age Group</h2>
-            <ul class="fp-age-grid" role="list">
-              <li class="fp-age-tile">
-                <span class="fp-age-tile__range">0&ndash;1</span>
-                <span class="fp-age-tile__desc">Sound, rhythm &amp; visual stimulation</span>
-              </li>
-              <li class="fp-age-tile">
-                <span class="fp-age-tile__range">1&ndash;2</span>
-                <span class="fp-age-tile__desc">First words, colors, songs</span>
-              </li>
-              <li class="fp-age-tile">
-                <span class="fp-age-tile__range">2&ndash;3</span>
-                <span class="fp-age-tile__desc">Phrases &amp; simple sentences</span>
-              </li>
-              <li class="fp-age-tile">
-                <span class="fp-age-tile__range">3&ndash;4</span>
-                <span class="fp-age-tile__desc">Conversations &amp; stories</span>
-              </li>
-              <li class="fp-age-tile">
-                <span class="fp-age-tile__range">4&ndash;6</span>
-                <span class="fp-age-tile__desc">Complex vocab &amp; reading readiness</span>
-              </li>
-              <li class="fp-age-tile fp-age-tile--all">
-                <span class="fp-age-tile__range">All</span>
-                <span class="fp-age-tile__desc">Songs &amp; fun for the whole family!</span>
-              </li>
-            </ul>
-        </section>
+      <section class="for-parents__age" aria-labelledby="age-heading">
+        <h2 id="age-heading" class="fp-age__title">A Little Time Together</h2>
+        <p>Choose a song or story you enjoy, pause whenever you like, and carry the play into your day.</p>
+        <a class="episodes-channel-link" href="videos.html">Explore the videos →</a>
+      </section>
       </div>
     </main>
     <footer class="site-footer" role="contentinfo">
@@ -322,7 +140,5 @@
         </nav>
       </div>
     </footer>
-    <script type="module" src="js/nav.js"></script>
-    <script type="module" src="js/main.js"></script>
   </body>
 </html>

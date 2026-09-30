@@ -24,7 +24,7 @@ function initEpisodeFilters(root) {
 
   group.addEventListener("click", (e) => {
     const t = e.target;
-    if (!(t instanceof HTMLElement)) return;
+    if (!(t instanceof Element)) return;
     const btn = t.closest("button[data-filter]");
     if (!btn || !group.contains(btn)) return;
     const value = btn.getAttribute("data-filter");
@@ -61,6 +61,7 @@ function initEpisodeFilters(root) {
   });
 
   applyFilter("all");
+  group.hidden = false;
 }
 
 const root = document.querySelector("[data-episodes-page]");

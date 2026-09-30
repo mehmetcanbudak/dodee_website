@@ -7,3 +7,17 @@ Thumbs.db
 
 # Local tooling / editor cache
 .omc/
+
+# Generated output and local tooling (the nested site has its own Git history)
+/public-static/
+/dist/
+/node_modules/
+/test-results/
+__pycache__/
+/.agents/
+/.claude/
+/.pi/
+/.vercel/
+
+# Independent React repository; manage its source and commits from that directory.
+/sites/dodee-next/

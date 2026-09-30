@@ -11,17 +11,15 @@
     <meta property="og:locale" content="en_GB" />
     <meta property="og:url" content="https://dodee-website.vercel.app/privacy.html" />
     <meta property="og:image" content="https://dodee-website.vercel.app/assets/hero-characters.png" />
+    <meta property="og:image:alt" content="Dodee and Onur" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#faf6f0" />
     <link rel="canonical" href="https://dodee-website.vercel.app/privacy.html" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;700&family=Nunito:wght@400;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preload" href="assets/fonts/dynapuff-latin-v9.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/nunito-latin-v32.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="css/fonts.css" />
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="icon" href="assets/nav-logo.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="assets/nav-logo.png" type="image/png" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -54,37 +52,39 @@
         </div>
       </nav>
     </header>
-    <main id="main" class="wrap subpage">
+    <script src="js/nav.js"></script>
+    <main id="main" tabindex="-1" class="wrap subpage">
       <a class="back-link" href="index.html">← Back to home</a>
       <h1>Privacy Policy</h1>
       <p>
-        This page describes how the Dodee &amp; Onur promotional website (“we”, “us”) handles
-        information. Last updated: April 2026.
+        This page describes how the Dodee &amp; Onur promotion website (the “Site”) handles personal information. It applies only to this promotional site, not to YouTube, social platforms, or third-party services you may reach through our links.
       </p>
-      <h2>What we collect</h2>
+      <h2>Email and contact</h2>
       <p>
-        The launch signup form on this site is currently a demonstration and does not send your email
-        to our servers. When a real email provider is connected, we will update this policy to explain
-        what is collected and why.
+        Email signup and contact forms are not available on this site. The site does not collect newsletter registrations or direct inquiries.
+      </p>
+      <h2>Website operation</h2>
+      <p>
+        The site’s own code does not include an analytics service or set tracking cookies. Our hosting provider may process technical information, such as IP addresses and request logs, to deliver and protect the site.
+      </p>
+      <h2>Browser storage and games</h2>
+      <p>
+        The color game stores your streak and the date of your last correct answer in your browser’s local storage. The site does not send those values to a server. You can remove them by clearing this site’s data in your browser settings.
+      </p>
+      <h2>Fonts, videos, and external links</h2>
+      <p>
+        Fonts are hosted on this site. The teaser uses YouTube’s privacy-enhanced video embed. Loading the player connects your browser to YouTube, which may receive technical information such as your IP address. The video provider may process additional information when you interact with or play a video.
       </p>
       <p>
-        Like most websites, our hosting provider may process technical data such as IP address,
-        browser type, and approximate location for security and reliability.
+        External platforms have their own privacy policies. Read <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google’s privacy policy</a> for information about YouTube.
       </p>
-      <h2>Cookies and local storage</h2>
+      <h2>Parents and caregivers</h2>
       <p>
-        Interactive features (for example, the color game streak) may store small amounts of data in
-        your browser using localStorage. This stays on your device and is not sent to us by default.
-      </p>
-      <h2>Children’s privacy</h2>
-      <p>
-        This site is intended for parents and caregivers. We do not knowingly collect personal
-        information from children. If you believe we have received information from a child, please
-        contact us so we can delete it.
+        This promotional site is intended for parents and caregivers. It does not provide account registration or forms requesting a child’s personal information.
       </p>
       <h2>Contact</h2>
       <p>
-        Questions? Visit <a href="contact.html">Contact</a> or reach out using the details listed there.
+        Direct inquiry contact details are not published yet. Current availability is listed on the <a href="contact.html">Contact page</a>.
       </p>
     </main>
     <footer class="site-footer" role="contentinfo">
@@ -105,6 +105,5 @@
         </nav>
       </div>
     </footer>
-    <script type="module" src="js/nav.js"></script>
   </body>
 </html>

@@ -1,25 +1,7 @@
 import { initColorGame } from "./color-game.js";
-import { initMysteryClue } from "./mystery-clue.js";
-import { initLaunchForm } from "./launch-form.js";
-import { initParentsForm } from "./parents-form.js";
 
 document.querySelectorAll("[data-color-game]").forEach((el) => {
   if (el instanceof HTMLElement) initColorGame(el);
-});
-
-document.querySelectorAll("[data-mystery-clue]").forEach((el) => {
-  if (el instanceof HTMLElement) {
-    // fire and forget — errors caught inside initMysteryClue
-    initMysteryClue(el).catch(() => {});
-  }
-});
-
-document.querySelectorAll("[data-launch-form]").forEach((el) => {
-  if (el instanceof HTMLElement) initLaunchForm(el);
-});
-
-document.querySelectorAll("[data-parents-form]").forEach((el) => {
-  if (el instanceof HTMLElement) initParentsForm(el);
 });
 
 /* ---- Scroll reveal (IntersectionObserver) ---- */
@@ -31,23 +13,6 @@ if (revealElements.length > 0 && "IntersectionObserver" in window) {
   ).matches;
 
   if (!prefersReducedMotion) {
-    // Check each element: if already in viewport, reveal immediately (no hide flash).
-    // Only hide elements that are below the fold.
-    const inViewport = (el) => {
-      const rect = el.getBoundingClientRect();
-      return rect.top < window.innerHeight && rect.bottom > 0;
-    };
-
-    revealElements.forEach((el) => {
-      if (inViewport(el)) {
-        // Already visible — skip the hide/reveal cycle entirely
-        el.classList.add("section--revealed");
-      } else {
-        // Below fold — hide now, reveal on scroll
-        el.classList.add("section--reveal");
-      }
-    });
-
     const revealObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -58,12 +23,20 @@ if (revealElements.length > 0 && "IntersectionObserver" in window) {
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      // Tall sections must reveal even when less than 12% can fit on screen.
+      { threshold: 0, rootMargin: "0px 0px 40px 0px" }
     );
 
     revealElements.forEach((el) => {
-      if (!el.classList.contains("section--revealed")) {
+      // Leave everything already reached visible, including restored scroll positions.
+      if (el.getBoundingClientRect().top >= window.innerHeight) {
+        el.classList.add("section--reveal");
         revealObserver.observe(el);
+        el.addEventListener("focusin", () => {
+          // Keyboard users must never focus an invisible control while awaiting an observer.
+          el.classList.remove("section--reveal");
+          revealObserver.unobserve(el);
+        }, { once: true });
       }
     });
   }
@@ -76,12 +49,14 @@ if (scrollHint) {
   const hideHint = () => {
     if (hintHidden) return;
     hintHidden = true;
-    scrollHint.style.transition = "opacity 0.4s ease";
+    const delay = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 400;
+    scrollHint.style.transition = delay ? "opacity 0.4s ease" : "none";
     scrollHint.style.opacity = "0";
     setTimeout(() => {
       scrollHint.style.display = "none";
-    }, 400);
+    }, delay);
     window.removeEventListener("scroll", hideHint, { passive: true });
   };
   window.addEventListener("scroll", hideHint, { passive: true });
+  if (window.scrollY > 0) hideHint();
 }

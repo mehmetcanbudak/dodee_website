@@ -1,40 +1,47 @@
-# Deploying the Dodee & Onur static site
+# Deploying the static website
 
-This project is plain **HTML / CSS / JavaScript** (ES modules). There is no build step.
+The root site uses plain HTML, CSS and JavaScript. Its build copies an allowlist of public pages, assets, scripts, styles and discovery files into `public-static/`. It deliberately excludes `.env*`, Git/tooling files, the nested React repository, tests and old build archives.
 
-## Local preview
+## Validate and preview
 
-ES modules and `fetch()` for `data/clues.json` require **serving over HTTP** (not opening `index.html` directly from the disk in all browsers).
-
-From the project folder:
-
-```bash
-python3 -m http.server 8080
+```sh
+npm run check
+npm run dev
 ```
 
-Then open `http://localhost:8080`.
+Open `http://127.0.0.1:8080`. The preview sends the security headers from `vercel.json`, so blocked resources can be found before deployment. Rebuild after edits with `npm run build` and reload. Python 3 is needed only for `check:html`.
 
-## Hosting options
+## Vercel
 
-Any static host works, for example:
+The selected production project is `dodee-website` in the existing `mehmetcan-budaks-projects` Vercel scope, serving `https://dodee-website.vercel.app`.
 
-- **Netlify** — drag-and-drop the folder, or connect a Git repo.
-- **Cloudflare Pages** — connect Git or upload.
-- **GitHub Pages** — publish the `main` branch root or `/docs`.
+Use the repository root, framework preset **Other**, build command `npm run build`, and output directory `public-static`. These settings are also recorded in `vercel.json`. The site has no runtime npm dependencies; development dependencies support QA. The configuration sets security headers and a favicon rewrite. `.vercelignore` excludes the separate React checkout, tooling, test evidence and local configuration from source uploads. Do not select the old root `dist/` directory.
 
-Set the **site root** to this folder so `index.html`, `css/`, `js/`, and `data/` are at the top level.
+After the local and hosted checks pass, use the existing linked project:
 
-## Custom domain (Squarespace or other registrar)
+```sh
+vercel deploy --prod --yes --scope mehmetcan-budaks-projects
+node scripts/check-deployment.mjs https://dodee-website.vercel.app
+```
 
-1. Deploy the site and get your host’s DNS instructions (often a **CNAME** for `www` and **A** / **ALIAS** records for the apex / `@` domain).
-2. In **Squarespace** → **Domains** → your domain → **DNS settings**, add the records your host provides.
-3. Wait for DNS propagation (often minutes to a few hours).
-4. Enable HTTPS on the host (usually automatic).
+The second command performs read-only checks and saves evidence under `test-results/deployment/`. For an immutable preview URL, set `CANONICAL_ORIGIN=https://dodee-website.vercel.app` to check its intended production metadata. It does not change DNS or deployment configuration.
 
-The domain only **points** to your files; you are not running this app “inside” Squarespace’s website builder.
+Versioned WOFF2 files are cached for one year. If font bytes change, change the filename and its CSS/preload references in the same release. Images retain the host's default policy so an unchanged image filename does not retain an obsolete asset indefinitely.
 
-## Files to verify after deploy
+## Other static hosts
 
-- Home page loads and scripts run (check browser console).
-- `GET /data/clues.json` returns 200 (mystery clue section).
-- Links to `privacy.html` and `contact.html` work.
+Run `npm run build` and publish **only `public-static/`**. On Netlify or Cloudflare Pages, set that as the publish directory. On GitHub Pages, upload that directory as the Pages artifact. Reproduce the response headers from `vercel.json` where the host supports them; a directory upload alone does not apply Vercel configuration.
+
+The root canonical metadata, `robots.txt` and `sitemap.xml` currently use `https://dodee-website.vercel.app`. If the production origin changes, update all three together. Configure custom-domain DNS and HTTPS through the chosen host.
+
+## Release checks
+
+- All eight pages, navigation, images and videos load without application errors.
+- Color game, episode filters, mobile menu and keyboard focus behave correctly.
+- No signup success or email-delivery promise appears without a real service.
+- `/.env.local`, `/sites/`, `/.git/`, `/package.json` and source archives are not served.
+- Security headers are present in actual responses, with no unexpected CSP violations.
+- Canonical links and sitemap refer to the deployed public origin.
+- Channel/social links, contact addresses, partner permission and published episode facts are verified by the owner.
+
+The separate React app has its own build and deployment instructions in `sites/dodee-next/README.md`. No deployment is performed by the local check/build commands.
