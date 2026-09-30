@@ -1,0 +1,95 @@
+{
+  "site": "https://dodee-website.vercel.app",
+  "checkedAt": "2026-09-30T18:54:36.329Z",
+  "release": {
+    "mergedSource": "2a0091d7227a62e676296438f5a4bd0ede3267f0",
+    "hostedCiRun": "36759485459",
+    "hostedCiAttempt": 2,
+    "identitySource": "Release coordinator; browser checked the live alias after deployment confirmation."
+  },
+  "method": "Pinned Playwright Chromium, native production CSP, mobile viewport 390x844 and desktop media viewport 1440x1000.",
+  "status": "passed",
+  "checks": {
+    "localFonts": {
+      "status": "passed",
+      "loadedFonts": [
+        "DynaPuff",
+        "Nunito"
+      ],
+      "requests": [
+        "https://dodee-website.vercel.app/assets/fonts/dynapuff-latin-v9.woff2",
+        "https://dodee-website.vercel.app/assets/fonts/nunito-latin-v32.woff2",
+        "https://dodee-website.vercel.app/css/fonts.css",
+        "https://dodee-website.vercel.app/css/styles.css"
+      ]
+    },
+    "mobileAboutNavigation": "passed",
+    "filters": [
+      {
+        "name": "Out now",
+        "count": 1,
+        "status": "passed"
+      },
+      {
+        "name": "Updates",
+        "count": 2,
+        "status": "passed"
+      },
+      {
+        "name": "All",
+        "count": 3,
+        "status": "passed"
+      }
+    ],
+    "colorGame": "passed",
+    "pageErrors": [],
+    "beforeMediaActivation": {
+      "iframeCount": 0,
+      "thirdPartyRequests": 0
+    },
+    "facadeActivation": {
+      "keyboard": "Enter",
+      "frameFocused": true,
+      "preservedSize": true
+    }
+  },
+  "security": {
+    "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://i.ytimg.com; frame-src https://www.youtube-nocookie.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "permissions-policy": "camera=(), microphone=(), geolocation=()",
+    "strict-transport-security": "max-age=63072000; includeSubDomains; preload"
+  },
+  "media": {
+    "keyboardPlayback": "passed",
+    "activation": "Single Enter on the first-party Play facade",
+    "playback": {
+      "time": 2.004443,
+      "duration": 81.621,
+      "paused": false,
+      "readyState": 4
+    },
+    "keyboardPause": {
+      "paused": true,
+      "time": 7.016495
+    },
+    "captions": {
+      "status": "unverified",
+      "automaticEnglishTrackMetadata": true,
+      "renderedSegments": 0,
+      "toggleAfterProbe": "Off",
+      "limitation": "Provider track metadata and keyboard toggling do not establish caption delivery or transcript quality."
+    }
+  },
+  "evidence": {
+    "rawReport": "test-results/static-browser/production-facade/smoke.json",
+    "screenshot": "test-results/static-browser/production-facade/media.png",
+    "screenshotInspected": true,
+    "supersedes": "The 18:06 UTC smoke preceded the click-to-load facade. Its raw evidence remains under test-results/static-browser/production-smoke/."
+  },
+  "boundaries": [
+    "Focused production smoke supplements the complete hosted browser suites.",
+    "No physical-device, screen-reader, audio-description, or caption-quality acceptance is claimed."
+  ]
+}

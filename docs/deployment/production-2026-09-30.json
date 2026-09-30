@@ -1,0 +1,144 @@
+{
+  "origin": "https://dodee-website.vercel.app",
+  "expectedOrigin": "https://dodee-website.vercel.app",
+  "checkedAt": "2026-09-30T18:54:35.142Z",
+  "checks": [
+    {
+      "path": "/",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "path": "/about.html",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "path": "/videos.html",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "path": "/for-parents.html",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "path": "/contact.html",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "path": "/sponsors.html",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "path": "/press.html",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "path": "/privacy.html",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "path": "/.env.local",
+      "status": "passed",
+      "httpStatus": 404
+    },
+    {
+      "path": "/.git/config",
+      "status": "passed",
+      "httpStatus": 404
+    },
+    {
+      "path": "/sites/dodee-next/package.json",
+      "status": "passed",
+      "httpStatus": 404
+    },
+    {
+      "path": "/package.json",
+      "status": "passed",
+      "httpStatus": 404
+    },
+    {
+      "path": "/dodee-calm-wonder.tar.gz",
+      "status": "passed",
+      "httpStatus": 404
+    },
+    {
+      "path": "/does-not-exist-audit",
+      "status": "passed",
+      "httpStatus": 404
+    },
+    {
+      "path": "/robots.txt",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "path": "/css/styles.css",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "path": "/css/fonts.css",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "path": "/js/main.js",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "path": "/js/nav.js",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "path": "/js/media.js",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "path": "/assets/nav-logo.png",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "path": "/assets/hero-characters-640.webp",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "path": "/assets/hero-characters-960.webp",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "path": "/favicon.ico",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "path": "/assets/hero-characters.png",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "path": "/assets/fonts/nunito-latin-v32.woff2",
+      "status": "passed",
+      "httpStatus": 200
+    }
+  ],
+  "releaseCommit": "2a0091d7227a62e676296438f5a4bd0ede3267f0",
+  "githubProductionDeploymentId": 6767567153
+}

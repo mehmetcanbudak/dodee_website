@@ -1,0 +1,35 @@
+{
+  "sourceCommit": "2a0091d7227a62e676296438f5a4bd0ede3267f0",
+  "checkedAt": "2026-09-30T18:55:24.173Z",
+  "origin": "https://dodee-website.vercel.app",
+  "checks": [
+    {
+      "route": "/",
+      "sourceFile": "index.html",
+      "sha256": "a1468785ca9699921d4a27ef46949476fb76b1a6b39bbe5d05a493a8808f94c0",
+      "deployedBytes": 16345,
+      "match": true
+    },
+    {
+      "route": "/privacy.html",
+      "sourceFile": "privacy.html",
+      "sha256": "8a175033a491616375433162c130c31304af934363f06a01159dc31bb226c3b0",
+      "deployedBytes": 6351,
+      "match": true
+    },
+    {
+      "route": "/css/styles.css",
+      "sourceFile": "css/styles.css",
+      "sha256": "c02537dcab938983571d74848ef957c29d85580b95ce707145dfeb37b42e4c5c",
+      "deployedBytes": 99737,
+      "match": true
+    },
+    {
+      "route": "/js/media.js",
+      "sourceFile": "js/media.js",
+      "sha256": "3a442be227f1eb94d43597461618db4d7ed48b0299d7caab99adac394a424c4b",
+      "deployedBytes": 1258,
+      "match": true
+    }
+  ]
+}

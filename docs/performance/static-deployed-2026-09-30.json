@@ -1,0 +1,105 @@
+{
+  "scope": "deployed-lab",
+  "origin": "https://dodee-website.vercel.app/",
+  "checkedAt": "2026-09-30T18:21:02.439Z",
+  "runs": 3,
+  "methodology": "Lighthouse mobile defaults with simulated Slow 4G and CPU throttling; median of repeated cold navigations. Local HTTP does not measure hosting/CDN/TLS/field performance.",
+  "transport": "Direct origin response; no transport proxy.",
+  "thirdPartyExclusions": [
+    "YouTube embeds and resources"
+  ],
+  "includeMedia": false,
+  "budget": {
+    "minScore": 85,
+    "lcpMs": 3000,
+    "tbtMs": 300,
+    "cls": 0.1,
+    "transferBytes": 1500000
+  },
+  "pages": [
+    {
+      "path": "/",
+      "measurements": [
+        {
+          "score": 98,
+          "fcpMs": 1618.8854999999999,
+          "lcpMs": 2263.8855,
+          "tbtMs": 0,
+          "cls": 0,
+          "transferBytes": 380960,
+          "youtubeTransferBytes": 0
+        },
+        {
+          "score": 98,
+          "fcpMs": 1626.223,
+          "lcpMs": 2271.223,
+          "tbtMs": 0,
+          "cls": 0,
+          "transferBytes": 380904,
+          "youtubeTransferBytes": 0
+        },
+        {
+          "score": 98,
+          "fcpMs": 1142.2935,
+          "lcpMs": 2267.2934999999998,
+          "tbtMs": 0,
+          "cls": 0.00006291130379097439,
+          "transferBytes": 380947,
+          "youtubeTransferBytes": 0
+        }
+      ],
+      "medians": {
+        "score": 98,
+        "fcpMs": 1618.8854999999999,
+        "lcpMs": 2267.2934999999998,
+        "tbtMs": 0,
+        "cls": 0,
+        "transferBytes": 380947,
+        "youtubeTransferBytes": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "/for-parents.html",
+      "measurements": [
+        {
+          "score": 100,
+          "fcpMs": 944.889,
+          "lcpMs": 1394.8890000000001,
+          "tbtMs": 0,
+          "cls": 0,
+          "transferBytes": 139110,
+          "youtubeTransferBytes": 0
+        },
+        {
+          "score": 100,
+          "fcpMs": 947.533,
+          "lcpMs": 1472.533,
+          "tbtMs": 0,
+          "cls": 0,
+          "transferBytes": 139073,
+          "youtubeTransferBytes": 0
+        },
+        {
+          "score": 100,
+          "fcpMs": 948.091,
+          "lcpMs": 1473.091,
+          "tbtMs": 0,
+          "cls": 0,
+          "transferBytes": 139074,
+          "youtubeTransferBytes": 0
+        }
+      ],
+      "medians": {
+        "score": 100,
+        "fcpMs": 947.533,
+        "lcpMs": 1472.533,
+        "tbtMs": 0,
+        "cls": 0,
+        "transferBytes": 139074,
+        "youtubeTransferBytes": 0
+      },
+      "failures": []
+    }
+  ]
+}

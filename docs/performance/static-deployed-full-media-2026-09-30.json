@@ -1,0 +1,61 @@
+{
+  "scope": "deployed-lab",
+  "origin": "https://dodee-website.vercel.app/",
+  "checkedAt": "2026-09-30T18:55:23.221Z",
+  "runs": 3,
+  "methodology": "Lighthouse mobile defaults with simulated Slow 4G and CPU throttling; median of repeated cold navigations with no scripted playback activation. Local HTTP does not measure hosting/CDN/TLS/field performance.",
+  "transport": "Direct origin response; no transport proxy.",
+  "thirdPartyExclusions": [],
+  "includeMedia": true,
+  "budget": {
+    "minScore": 85,
+    "lcpMs": 3000,
+    "tbtMs": 300,
+    "cls": 0.1,
+    "transferBytes": 1500000
+  },
+  "pages": [
+    {
+      "path": "/",
+      "measurements": [
+        {
+          "score": 99,
+          "fcpMs": 1140.742,
+          "lcpMs": 1965.7420000000002,
+          "tbtMs": 0,
+          "cls": 0,
+          "transferBytes": 381896,
+          "youtubeTransferBytes": 0
+        },
+        {
+          "score": 99,
+          "fcpMs": 1132.844,
+          "lcpMs": 1957.844,
+          "tbtMs": 0,
+          "cls": 0,
+          "transferBytes": 382020,
+          "youtubeTransferBytes": 0
+        },
+        {
+          "score": 99,
+          "fcpMs": 1131.321,
+          "lcpMs": 1956.321,
+          "tbtMs": 0,
+          "cls": 0.00006291130379097439,
+          "transferBytes": 381900,
+          "youtubeTransferBytes": 0
+        }
+      ],
+      "medians": {
+        "score": 99,
+        "fcpMs": 1132.844,
+        "lcpMs": 1957.844,
+        "tbtMs": 0,
+        "cls": 0,
+        "transferBytes": 381900,
+        "youtubeTransferBytes": 0
+      },
+      "failures": []
+    }
+  ]
+}

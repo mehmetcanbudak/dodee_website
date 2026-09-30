@@ -20,11 +20,13 @@ Use the repository root, framework preset **Other**, build command `npm run buil
 After the local and hosted checks pass, use the existing linked project:
 
 ```sh
-vercel deploy --prod --yes --scope mehmetcan-budaks-projects
+npm exec --yes --package vercel@62.0.0 -- vercel deploy --prod --yes --scope mehmetcan-budaks-projects
 node scripts/check-deployment.mjs https://dodee-website.vercel.app
 ```
 
 The second command performs read-only checks and saves evidence under `test-results/deployment/`. For an immutable preview URL, set `CANONICAL_ORIGIN=https://dodee-website.vercel.app` to check its intended production metadata. It does not change DNS or deployment configuration.
+
+The pinned CLI avoids relying on an older global installation: Vercel rejected the installed 41.6.1 upload client because its endpoint requires 47.2.2 or newer. The release uses 62.0.0 through `npm exec` without changing the global CLI. A protected preview redirects to Vercel login and cannot establish public response behavior; the verifier rejects that redirect explicitly. Verify the public production alias after release.
 
 Versioned WOFF2 files are cached for one year. If font bytes change, change the filename and its CSS/preload references in the same release. Images retain the host's default policy so an unchanged image filename does not retain an obsolete asset indefinitely.
 

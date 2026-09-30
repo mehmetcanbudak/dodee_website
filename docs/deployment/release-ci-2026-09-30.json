@@ -1,0 +1,54 @@
+{
+  "checkedApplicationCommit": "ff748288f02706e19a94fae955f6d9ca755d663c",
+  "mergedCommit": "2a0091d7227a62e676296438f5a4bd0ede3267f0",
+  "runUrl": "https://github.com/mehmetcanbudak/dodee_website/actions/runs/36759485459",
+  "attempt": 2,
+  "status": "completed",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "name": "browser (webkit)",
+      "conclusion": "success",
+      "startedAt": "2026-09-30T18:48:45Z",
+      "completedAt": "2026-09-30T18:52:00Z",
+      "url": "https://github.com/mehmetcanbudak/dodee_website/actions/runs/36759485459/job/110044003217"
+    },
+    {
+      "name": "performance",
+      "conclusion": "success",
+      "startedAt": "2026-09-30T18:34:02Z",
+      "completedAt": "2026-09-30T18:35:20Z",
+      "url": "https://github.com/mehmetcanbudak/dodee_website/actions/runs/36759485459/job/110044004740"
+    },
+    {
+      "name": "browser (firefox)",
+      "conclusion": "success",
+      "startedAt": "2026-09-30T18:34:03Z",
+      "completedAt": "2026-09-30T18:36:39Z",
+      "url": "https://github.com/mehmetcanbudak/dodee_website/actions/runs/36759485459/job/110044040780"
+    },
+    {
+      "name": "check",
+      "conclusion": "success",
+      "startedAt": "2026-09-30T18:34:01Z",
+      "completedAt": "2026-09-30T18:34:14Z",
+      "url": "https://github.com/mehmetcanbudak/dodee_website/actions/runs/36759485459/job/110044055513"
+    },
+    {
+      "name": "browser (chromium)",
+      "conclusion": "success",
+      "startedAt": "2026-09-30T18:34:01Z",
+      "completedAt": "2026-09-30T18:42:54Z",
+      "url": "https://github.com/mehmetcanbudak/dodee_website/actions/runs/36759485459/job/110044060658"
+    }
+  ],
+  "retryNote": "The first WebKit job was canceled after more than 12 minutes of slow Ubuntu package downloads, before browser tests began. Only that unfinished job was retried on a fresh runner; the four successful jobs were retained. The second WebKit attempt passed without a source or test change.",
+  "productionDeployment": {
+    "githubId": 6767567153,
+    "environment": "Production",
+    "commit": "2a0091d7227a62e676296438f5a4bd0ede3267f0",
+    "immutableUrl": "https://dodee-website-a65txfj1t-mehmetcan-budaks-projects.vercel.app",
+    "publicAlias": "https://dodee-website.vercel.app",
+    "status": "success"
+  }
+}

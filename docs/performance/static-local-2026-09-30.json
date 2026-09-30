@@ -1,0 +1,104 @@
+{
+  "scope": "local-lab",
+  "origin": "http://127.0.0.1:50969/",
+  "checkedAt": "2026-09-30T17:37:50.745Z",
+  "runs": 3,
+  "methodology": "Lighthouse mobile defaults with simulated Slow 4G and CPU throttling; median of repeated cold navigations. Local HTTP does not measure hosting/CDN/TLS/field performance.",
+  "thirdPartyExclusions": [
+    "YouTube embeds and resources"
+  ],
+  "includeMedia": false,
+  "budget": {
+    "minScore": 85,
+    "lcpMs": 3000,
+    "tbtMs": 300,
+    "cls": 0.1,
+    "transferBytes": 1500000
+  },
+  "pages": [
+    {
+      "path": "/",
+      "measurements": [
+        {
+          "score": 98,
+          "fcpMs": 1053.062,
+          "lcpMs": 2328.8274999999994,
+          "tbtMs": 51,
+          "cls": 0.00006291130379097439,
+          "transferBytes": 390263,
+          "youtubeTransferBytes": 0
+        },
+        {
+          "score": 98,
+          "fcpMs": 1057.965,
+          "lcpMs": 2407.965,
+          "tbtMs": 0,
+          "cls": 0.00006291130379097439,
+          "transferBytes": 390263,
+          "youtubeTransferBytes": 0
+        },
+        {
+          "score": 98,
+          "fcpMs": 1381.8825000000002,
+          "lcpMs": 2329.7062499999997,
+          "tbtMs": 0,
+          "cls": 0,
+          "transferBytes": 390263,
+          "youtubeTransferBytes": 0
+        }
+      ],
+      "medians": {
+        "score": 98,
+        "fcpMs": 1057.965,
+        "lcpMs": 2329.7062499999997,
+        "tbtMs": 0,
+        "cls": 0.00006291130379097439,
+        "transferBytes": 390263,
+        "youtubeTransferBytes": 0
+      },
+      "failures": []
+    },
+    {
+      "path": "/for-parents.html",
+      "measurements": [
+        {
+          "score": 100,
+          "fcpMs": 1058.946,
+          "lcpMs": 1738.4189999999999,
+          "tbtMs": 0,
+          "cls": 0,
+          "transferBytes": 140701,
+          "youtubeTransferBytes": 0
+        },
+        {
+          "score": 100,
+          "fcpMs": 1089.004,
+          "lcpMs": 1783.5059999999999,
+          "tbtMs": 0,
+          "cls": 0,
+          "transferBytes": 140778,
+          "youtubeTransferBytes": 0
+        },
+        {
+          "score": 100,
+          "fcpMs": 1054.428,
+          "lcpMs": 1806.642,
+          "tbtMs": 0,
+          "cls": 0,
+          "transferBytes": 140778,
+          "youtubeTransferBytes": 0
+        }
+      ],
+      "medians": {
+        "score": 100,
+        "fcpMs": 1058.946,
+        "lcpMs": 1783.5059999999999,
+        "tbtMs": 0,
+        "cls": 0,
+        "transferBytes": 140778,
+        "youtubeTransferBytes": 0
+      },
+      "failures": []
+    }
+  ]
+}

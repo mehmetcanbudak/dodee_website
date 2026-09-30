@@ -25,13 +25,14 @@ The preview builds once at startup. Run `npm run build` after changes, then relo
 
 ## React website
 
-See [the app README](sites/dodee-next/README.md) for installation, checks, preview and deployment details. The two designs have different styling and URLs (`videos.html` versus `/episodes`); changing one does not update the other.
+See [the private app README](https://github.com/mehmetcanbudak/dodee-react-website/blob/main/README.md) for installation, checks, preview and deployment details. The two designs have different styling and URLs (`videos.html` versus `/episodes`); changing one does not update the other.
 
 ## Product boundaries
 
 - There is no connected newsletter provider. Both editions direct visitors to the verified channel for updates and do not collect subscription details.
 - The static color game's optional progress is kept in local browser storage. The April clue campaign is permanently archived; no future launch is implied.
-- Video/channel links and business claims need owner verification before release. No release date, audience metric or educational outcome should be inferred from the presence of artwork or a draft page.
+- The teaser loads YouTube only after Play is activated. A direct video link remains available without JavaScript.
+- The published channel and teaser were verified during this release. New business claims, direct contact addresses and partner material require confirmation before publication. No release date, audience metric or educational outcome should be inferred from artwork or a draft page.
 - Local validation does not verify deployed configuration, email ownership, third-party availability or real assistive-technology behavior.
 
 See [the September 30 audit report](docs/AUDIT-2026-09-30.md) for the initial changes and [the completion checklist](docs/REMAINING-WORK-2026-09-30.md) for current release evidence and any external acceptance still outstanding.
