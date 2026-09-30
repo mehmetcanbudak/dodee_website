@@ -6,25 +6,23 @@
     <title>Episodes — Dodee &amp; Onur</title>
     <meta
       name="description"
-      content="Watch Dodee &amp; Onur on YouTube — episode list with dates. English for little ones (0–4)."
+      content="Watch Dodee &amp; Onur on YouTube — teaser and channel updates. English for little ones (0–4)."
     />
     <meta property="og:title" content="Episodes — Dodee &amp; Onur" />
-    <meta property="og:description" content="Watch Dodee &amp; Onur on YouTube — episode list with dates. English for little ones (0–4)." />
+    <meta property="og:description" content="Watch Dodee &amp; Onur on YouTube — teaser and channel updates. English for little ones (0–4)." />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_GB" />
     <meta property="og:url" content="https://dodee-website.vercel.app/videos.html" />
     <meta property="og:image" content="https://dodee-website.vercel.app/assets/hero-characters.png" />
+    <meta property="og:image:alt" content="Dodee and Onur" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#faf6f0" />
     <link rel="canonical" href="https://dodee-website.vercel.app/videos.html" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;700&family=Nunito:wght@400;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preload" href="assets/fonts/dynapuff-latin-v9.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/nunito-latin-v32.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="css/fonts.css" />
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="icon" href="assets/nav-logo.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="assets/nav-logo.png" type="image/png" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -57,11 +55,12 @@
         </div>
       </nav>
     </header>
-    <main id="main" class="wrap subpage subpage--episodes" data-episodes-page>
+    <script src="js/nav.js"></script>
+    <main id="main" tabindex="-1" class="wrap subpage subpage--episodes" data-episodes-page>
       <a class="back-link" href="index.html">← Back to home</a>
 
       <header class="episodes-intro">
-        <p class="episodes-intro__eyebrow">YouTube Kids</p>
+        <p class="episodes-intro__eyebrow">YouTube</p>
         <h1 id="episodes-heading">Episodes</h1>
         <p class="episodes-intro__lead">
           Short, gentle episodes for ages 0–4 — packed with English learning moments.
@@ -75,14 +74,14 @@
           >
             Open channel
           </a>
-          <a class="episodes-channel-link" href="index.html#launch-alert">Get launch alert →</a>
+          <a class="episodes-channel-link" href="index.html#launch-alert">Follow channel updates →</a>
         </div>
       </header>
 
-      <section class="episodes-section" aria-labelledby="episodes-heading">
+      <section class="episodes-section" aria-labelledby="episodes-list-heading">
         <div class="episodes-section__head">
           <h2 id="episodes-list-heading" class="episodes-section__title">Episode list</h2>
-          <div class="episode-filters" role="group" aria-label="Filter episodes by availability">
+          <div class="episode-filters" hidden role="group" aria-label="Filter episodes by availability">
             <button type="button" class="episode-filter" aria-pressed="true" data-filter="all" id="ep-filter-all">
               All
             </button>
@@ -90,7 +89,7 @@
               Out now
             </button>
             <button type="button" class="episode-filter" aria-pressed="false" data-filter="upcoming" id="ep-filter-up">
-              Coming soon
+              Updates
             </button>
           </div>
         </div>
@@ -105,29 +104,29 @@
                   >Meet Dodee &amp; Onur — first look</a
                 >
               </h3>
-              <p class="episode-card__summary">Watch the teaser on YouTube Kids</p>
+              <p class="episode-card__summary">Watch the teaser on YouTube</p>
             </div>
           </article>
 
           <article class="episode-card episode-card--upcoming" data-episode-status="upcoming" role="listitem">
             <div class="episode-card__body">
-              <p class="episode-card__meta">EPISODE 1 · 23 April 2026</p>
-              <h3 class="episode-card__title">Coming soon</h3>
+              <p class="episode-card__meta">EPISODE 1 · Check the channel</p>
+              <h3 class="episode-card__title">Episode updates</h3>
               <a
                 class="episode-card__cta-subtle"
                 href="https://www.youtube.com/@Dodee-Our-Buddy"
                 target="_blank"
                 rel="noopener noreferrer"
-                >Remind me on YouTube →</a
+                >Visit the channel →</a
               >
             </div>
           </article>
 
           <article class="episode-card episode-card--upcoming" data-episode-status="upcoming" role="listitem">
             <div class="episode-card__body">
-              <p class="episode-card__meta">EPISODE 2 · Date TBA</p>
-              <h3 class="episode-card__title">In the works</h3>
-              <a class="episode-card__cta-subtle" href="index.html#launch-alert">Get notified →</a>
+              <p class="episode-card__meta">MORE EPISODES</p>
+              <h3 class="episode-card__title">Explore Dodee’s channel</h3>
+              <a class="episode-card__cta-subtle" href="https://www.youtube.com/@Dodee-Our-Buddy" target="_blank" rel="noopener noreferrer">View channel updates →</a>
             </div>
           </article>
         </div>
@@ -151,7 +150,6 @@
         </nav>
       </div>
     </footer>
-    <script type="module" src="js/nav.js"></script>
     <script type="module" src="js/episodes.js"></script>
   </body>
 </html>

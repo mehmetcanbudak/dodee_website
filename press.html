@@ -6,25 +6,23 @@
     <title>Press &amp; Media — Dodee &amp; Onur</title>
     <meta
       name="description"
-      content="Press &amp; media: assets, quotes, and contact for journalists covering Dodee."
+      content="Show information and press resource availability for journalists covering Dodee."
     />
     <meta property="og:title" content="Press &amp; Media — Dodee &amp; Onur" />
-    <meta property="og:description" content="Press &amp; media: In the Spotlight — Dodee &amp; Onur, launch 23 Apr 2026, press kit and inquiries." />
+    <meta property="og:description" content="Show information and press resource availability for journalists covering Dodee." />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_GB" />
     <meta property="og:url" content="https://dodee-website.vercel.app/press.html" />
     <meta property="og:image" content="https://dodee-website.vercel.app/assets/hero-characters.png" />
+    <meta property="og:image:alt" content="Dodee and Onur" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#faf6f0" />
     <link rel="canonical" href="https://dodee-website.vercel.app/press.html" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;700&family=Nunito:wght@400;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preload" href="assets/fonts/dynapuff-latin-v9.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/nunito-latin-v32.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="css/fonts.css" />
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="icon" href="assets/nav-logo.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="assets/nav-logo.png" type="image/png" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -57,84 +55,33 @@
         </div>
       </nav>
     </header>
-    <main id="main" class="wrap subpage press-page">
+    <script src="js/nav.js"></script>
+    <main id="main" tabindex="-1" class="wrap subpage press-page">
       <a class="back-link" href="index.html">← Back to home</a>
 
       <header class="press-hero">
         <h1 class="press-hero__title">Press &amp; Media</h1>
         <p class="press-hero__lead">
-          Assets, quotes, and contact for journalists, partners, and creators covering Dodee.
+          Show information for journalists, partners, and creators covering Dodee.
         </p>
       </header>
 
-      <ul class="press-stats-row" role="list">
-        <li class="press-stat">
-          <p class="press-stat__num">1M+</p>
-          <p class="press-stat__label">YouTube views</p>
-        </li>
-        <li class="press-stat">
-          <p class="press-stat__num">50+</p>
-          <p class="press-stat__label">Episodes</p>
-        </li>
-        <li class="press-stat">
-          <p class="press-stat__num">4</p>
-          <p class="press-stat__label">Languages</p>
-        </li>
-        <li class="press-stat">
-          <p class="press-stat__num">100%</p>
-          <p class="press-stat__label">Free</p>
-        </li>
-      </ul>
-
-      <h2>What people say</h2>
-      <div class="press-quotes">
-        <figure class="press-card">
-          <blockquote class="press-card__quote">
-            <p>
-              “My toddler asks for Dodee every morning — English stuck without worksheets.”
-            </p>
-          </blockquote>
-          <figcaption class="press-card__cite">— Parent, Istanbul</figcaption>
-        </figure>
-        <figure class="press-card">
-          <blockquote class="press-card__quote">
-            <p>“Finally screen time that feels like play, not pressure.”</p>
-          </blockquote>
-          <figcaption class="press-card__cite">— Early educator</figcaption>
-        </figure>
-      </div>
+      <section class="press-contact-card" aria-labelledby="press-about-heading">
+        <h2 id="press-about-heading">About the show</h2>
+        <p>Dodee &amp; Onur brings together songs, gentle stories, and playful English for families.</p>
+        <a href="about.html">Meet Dodee &amp; Onur →</a>
+      </section>
 
       <section class="press-kit" aria-labelledby="press-kit-heading">
         <h2 id="press-kit-heading">Press kit</h2>
-        <ul class="press-kit__grid" role="list">
-          <li>
-            <a class="press-kit__tile" href="mailto:press@dodeeourbuddy.com?subject=Request%3A%20Logos%20%26%20stills">
-              <span class="press-kit__tile-title">📸 Logos &amp; stills</span>
-              <span class="press-kit__tile-desc">Brand marks and character art</span>
-              <span class="press-kit__tile-dl">Download →</span>
-            </a>
-          </li>
-          <li>
-            <a class="press-kit__tile" href="mailto:press@dodeeourbuddy.com?subject=Request%3A%20Fact%20sheet">
-              <span class="press-kit__tile-title">📄 Fact sheet</span>
-              <span class="press-kit__tile-desc">One-pager PDF</span>
-              <span class="press-kit__tile-dl">Download →</span>
-            </a>
-          </li>
-          <li>
-            <a class="press-kit__tile" href="mailto:press@dodeeourbuddy.com?subject=Request%3A%20Trailer%20cutdowns">
-              <span class="press-kit__tile-title">🎬 Trailer cutdowns</span>
-              <span class="press-kit__tile-desc">Short social-ready clips</span>
-              <span class="press-kit__tile-dl">Download →</span>
-            </a>
-          </li>
-        </ul>
+        <p>A downloadable press kit is not currently available.</p>
+        <a class="btn" href="https://www.youtube.com/watch?v=tHlpVMTYDhg" target="_blank" rel="noopener noreferrer">Watch the teaser on YouTube →</a>
       </section>
 
       <section class="press-contact-card" aria-labelledby="press-contact-heading">
         <h2 id="press-contact-heading">Press contact</h2>
-        <p>For interviews, assets, and embargoed materials:</p>
-        <a href="mailto:press@dodeeourbuddy.com">press@dodeeourbuddy.com</a>
+        <p>Direct inquiry contact details are not published yet.</p>
+        <a href="contact.html">Contact availability →</a>
       </section>
     </main>
     <footer class="site-footer" role="contentinfo">
@@ -155,6 +102,5 @@
         </nav>
       </div>
     </footer>
-    <script type="module" src="js/nav.js"></script>
   </body>
 </html>

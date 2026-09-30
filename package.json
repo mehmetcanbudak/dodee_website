@@ -1,0 +1,27 @@
+{
+  "name": "dodee-static-website",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "scripts": {
+    "build": "node scripts/build-static.mjs",
+    "dev": "node scripts/serve-static.mjs",
+    "check:html": "python3 scripts/check-static.py",
+    "test": "node --test tests/*.test.mjs",
+    "check": "npm run check:html && npm test && npm run build",
+    "browsers:install": "playwright install chromium firefox webkit",
+    "test:browser": "npm run build && node scripts/run-qa.mjs browser",
+    "test:browser:built": "node scripts/run-qa.mjs browser",
+    "perf": "npm run build && node scripts/run-qa.mjs performance",
+    "perf:built": "node scripts/run-qa.mjs performance",
+    "assets:images": "node scripts/build-responsive-images.mjs"
+  },
+  "devDependencies": {
+    "axe-core": "4.13.0",
+    "lighthouse": "13.5.0",
+    "playwright": "1.63.0",
+    "sharp": "0.35.5"
+  }
+}

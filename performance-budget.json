@@ -1,0 +1,7 @@
+{
+  "minScore": 85,
+  "lcpMs": 3000,
+  "tbtMs": 300,
+  "cls": 0.1,
+  "transferBytes": 1500000
+}

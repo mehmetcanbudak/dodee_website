@@ -6,7 +6,7 @@
     <title>About — Dodee &amp; Onur</title>
     <meta
       name="description"
-      content="Meet Dodee and Onur Seyhoğlu — a warm YouTube Kids series for ages 0–4."
+      content="Meet Dodee and Onur Seyhoğlu — a warm YouTube series for ages 0–4."
     />
     <meta property="og:title" content="About — Dodee &amp; Onur" />
     <meta property="og:description" content="Meet Dodee and Onur Seyhoğlu, discover our music-first and spiral-curriculum approach." />
@@ -14,17 +14,15 @@
     <meta property="og:locale" content="en_GB" />
     <meta property="og:url" content="https://dodee-website.vercel.app/about.html" />
     <meta property="og:image" content="https://dodee-website.vercel.app/assets/hero-characters.png" />
+    <meta property="og:image:alt" content="Dodee and Onur" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#faf6f0" />
     <link rel="canonical" href="https://dodee-website.vercel.app/about.html" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;700&family=Nunito:wght@400;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preload" href="assets/fonts/dynapuff-latin-v9.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/nunito-latin-v32.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="css/fonts.css" />
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="icon" href="assets/nav-logo.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="assets/nav-logo.png" type="image/png" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -57,11 +55,12 @@
         </div>
       </nav>
     </header>
-    <main id="main" class="wrap subpage about-page">
+    <script src="js/nav.js"></script>
+    <main id="main" tabindex="-1" class="wrap subpage about-page">
       <a class="back-link" href="index.html">← Back to home</a>
       <h1>The heart of Dodee&#8217;s world.</h1>
       <p>
-        A warm YouTube Kids series for ages 0–4. Songs, gentle stories, and playful moments — free on YouTube.
+        A warm YouTube series for ages 0–4. Songs, gentle stories, and playful moments — free on YouTube.
       </p>
 
       <section class="about-meet" aria-labelledby="about-meet-heading">
@@ -153,6 +152,5 @@
         </nav>
       </div>
     </footer>
-    <script type="module" src="js/nav.js"></script>
   </body>
 </html>

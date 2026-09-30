@@ -4,24 +4,22 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Contact — Dodee &amp; Onur</title>
-    <meta name="description" content="Contact the Dodee &amp; Onur show team." />
+    <meta name="description" content="Contact availability and the official Dodee &amp; Onur YouTube channel." />
     <meta property="og:title" content="Contact — Dodee &amp; Onur" />
-    <meta property="og:description" content="Contact the Dodee &amp; Onur show team." />
+    <meta property="og:description" content="Contact availability and the official Dodee &amp; Onur YouTube channel." />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_GB" />
     <meta property="og:url" content="https://dodee-website.vercel.app/contact.html" />
     <meta property="og:image" content="https://dodee-website.vercel.app/assets/hero-characters.png" />
+    <meta property="og:image:alt" content="Dodee and Onur" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#faf6f0" />
     <link rel="canonical" href="https://dodee-website.vercel.app/contact.html" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;700&family=Nunito:wght@400;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preload" href="assets/fonts/dynapuff-latin-v9.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/nunito-latin-v32.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="css/fonts.css" />
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="icon" href="assets/nav-logo.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="assets/nav-logo.png" type="image/png" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -54,26 +52,29 @@
         </div>
       </nav>
     </header>
-    <main id="main" class="wrap subpage contact-page">
+    <script src="js/nav.js"></script>
+    <main id="main" tabindex="-1" class="wrap subpage contact-page">
       <a class="back-link" href="index.html">← Back to home</a>
 
       <div class="contact-hero">
-        <p class="section__eyebrow">Say hello</p>
-        <h1>Contact Us</h1>
+        <p class="section__eyebrow">Stay connected</p>
+        <h1>Contact</h1>
         <p class="contact-hero__lead">
-          For partnerships, press, or a friendly hello — we’d love to hear from you.
+          Direct inquiry contact details are not published yet. You can watch Dodee &amp; Onur on our YouTube channel.
         </p>
       </div>
 
       <div class="contact-grid">
         <article class="contact-card contact-card--email">
-          <h2 class="contact-card__title">Email</h2>
-          <a class="contact-card__link" href="mailto:hello@dodeeourbuddy.com">hello@dodeeourbuddy.com</a>
+          <h2 class="contact-card__title">Direct inquiries</h2>
+          <p>An email address or contact form is not currently available on this site.</p>
         </article>
 
         <article class="contact-card contact-card--social">
-          <h2 class="contact-card__title">Social</h2>
-          <p class="contact-card__text">YouTube · Instagram · TikTok · Spotify</p>
+          <h2 class="contact-card__title">Watch the show</h2>
+          <ul class="contact-social-links" role="list">
+            <li><a href="https://www.youtube.com/@Dodee-Our-Buddy" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+          </ul>
         </article>
 
         <article class="contact-card contact-card--press">
@@ -87,10 +88,6 @@
         </article>
       </div>
 
-      <p class="contact-note">
-        We usually reply within 2 business days. For press, use
-        <a href="mailto:press@dodeeourbuddy.com">press@dodeeourbuddy.com</a>.
-      </p>
     </main>
     <footer class="site-footer" role="contentinfo">
       <div class="footer-inner wrap">
@@ -110,6 +107,5 @@
         </nav>
       </div>
     </footer>
-    <script type="module" src="js/nav.js"></script>
   </body>
 </html>

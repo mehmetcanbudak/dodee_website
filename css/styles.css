@@ -23,7 +23,7 @@
   --muted: #5c534a;
   --accent: #b45439;
   --accent-soft: rgba(180, 84, 57, 0.12);
-  --sage: #5a7d6c;
+  --sage: #355442;
   --sage-soft: rgba(90, 125, 108, 0.15);
   --border: rgba(42, 37, 32, 0.12);
   /* Section card shadow */
@@ -39,9 +39,10 @@
   /* Subpage cream card (About, Episodes, etc.) — Figma Content Card 720px */
   --subpage-max: 45rem;
   --nav-inner-max: 1440px;
-  --space: clamp(1.5rem, 5vw, 2.75rem);
+  /* Keep reading width available when users enlarge text independently. */
+  --space: clamp(24px, 5vw, 44px);
   /* Space for fixed nav (approx. one line); wraps on small screens */
-  --site-nav-height: 3.25rem;
+  --site-nav-height: 4rem;
   /* Full-width section band colors */
   --band-teaser: #ffb09e;
   --band-color-game: #adffc9;
@@ -61,15 +62,25 @@
   /* Stacking: homepage .page-band--follow is 6; footer and subpage must sit above follow decors in overlap cases */
   --z-footer: 10;
   --z-subpage: 12;
-  /* Inside .page-band__artboard: content column under decorative SVG/PNG (pointer-events: none) */
+  /* Keep interactive content above decorative SVG/PNG artwork. */
   --z-sec-decor: 2;
-  --z-sec-content: 1;
+  --z-sec-content: 3;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+/* Author display rules must not override native hidden state (filters, statuses). */
+[hidden] {
+  display: none !important;
+}
+
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
 }
 
 html {
@@ -196,6 +207,7 @@ body:has(main.subpage)::before {
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
+  min-height: calc(var(--site-nav-height) - 1px);
   padding-block: 10px;
   padding-inline: 0;
 }
@@ -376,11 +388,11 @@ body:has(main.subpage)::before {
 }
 
 @media (max-width: 64rem) {
-  .site-nav__toggle {
+  .site-nav[data-enhanced="true"] .site-nav__toggle {
     display: inline-flex;
   }
 
-  .site-nav__list {
+  .site-nav[data-enhanced="true"] .site-nav__list {
     position: fixed;
     top: var(--site-nav-height);
     left: 0;
@@ -402,6 +414,7 @@ body:has(main.subpage)::before {
     max-height: 0;
     overflow: hidden;
     opacity: 0;
+    visibility: hidden;
     pointer-events: none;
     -webkit-backdrop-filter: blur(12px) saturate(1.1);
     backdrop-filter: blur(12px) saturate(1.1);
@@ -410,8 +423,11 @@ body:has(main.subpage)::before {
       opacity 0.2s ease;
   }
 
-  .site-nav.is-menu-open .site-nav__list {
-    max-height: min(75vh, 28rem);
+  .site-nav[data-enhanced="true"].is-menu-open .site-nav__list {
+    max-height: min(calc(100dvh - var(--site-nav-height)), 28rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    visibility: visible;
     opacity: 1;
     pointer-events: auto;
     padding-top: 0.65rem;
@@ -489,8 +505,8 @@ body:has(main.subpage)::before {
   margin-inline: 0;
   margin-top: calc(-1 * var(--site-nav-height));
   /* Exactly one screen — svh first (fallback), then dvh for dynamic viewport */
-  min-height: 100svh;
-  min-height: 100dvh;
+  min-height: max(100svh, 34rem);
+  min-height: max(100dvh, 34rem);
   height: 100svh;
   height: 100dvh;
   display: flex;
@@ -550,6 +566,7 @@ body:has(main.subpage)::before {
   background-color: var(--bg);
   position: relative;
   z-index: 2;
+  overflow-x: clip;
 }
 
 /* Max artboard width for decorative elements */
@@ -913,7 +930,7 @@ body:has(main.subpage)::before {
 
 .color-streak span {
   font-variant-numeric: tabular-nums;
-  color: var(--accent);
+  color: var(--sage);
 }
 
 .color-feedback {
@@ -1321,7 +1338,7 @@ body:has(main.subpage)::before {
   flex-direction: column;
   align-items: stretch;
   gap: 1rem;
-  padding: 2.5rem;
+  padding: min(2.5rem, 40px);
   background: rgba(255, 254, 251, 0.94);
   border-radius: 1.5rem;
   border: none;
@@ -2375,7 +2392,7 @@ main.wrap.subpage {
   pointer-events: none;
 }
 
-/* Follow band: big rainbow sits under the frosted card; other .sec-decor stay above the card */
+/* Follow band: keep the rainbow behind the frosted content card. */
 .page-band--follow .rainbow-group {
   z-index: 0;
 }
@@ -3409,6 +3426,10 @@ a.sponsors-join__cta:focus-visible {
   border-color: rgba(143, 166, 224, 0.18);
 }
 
+.page-band--clue .section__lead {
+  color: var(--ink);
+}
+
 .page-band--launch .section__inner {
   background: rgba(255, 240, 215, 0.6);
   border-color: rgba(196, 92, 62, 0.12);
@@ -4004,7 +4025,7 @@ a.sponsors-join__cta:focus-visible {
   font-weight: 700;
   font-size: 0.875rem;
   text-decoration: none;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
 }
 
 .episodes-section {
@@ -4049,9 +4070,10 @@ a.sponsors-join__cta:focus-visible {
 
 .episode-card {
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: flex-start;
   gap: 0.875rem;
-  padding: 1rem;
+  padding: min(1rem, 16px);
   border: none;
   border-radius: 1.125rem;
   background: var(--bg-elevated);
@@ -4082,7 +4104,7 @@ a.sponsors-join__cta:focus-visible {
 }
 
 .episode-card__body {
-  flex: 1;
+  flex: 1 1 10em;
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -4425,10 +4447,11 @@ a.sponsors-join__cta:focus-visible {
 
 .sponsors-join__title {
   margin: 0;
+  color: var(--ink);
   font-size: 1.125rem;
 }
 
-.sponsors-join__lead {
+.sponsors-page .sponsors-join__lead {
   margin: 0;
   font-size: 0.875rem;
   color: var(--ink);
@@ -4438,7 +4461,7 @@ a.sponsors-join__cta:focus-visible {
   display: none;
 }
 
-.sponsors-join__cta {
+a.sponsors-join__cta {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4453,7 +4476,7 @@ a.sponsors-join__cta:focus-visible {
   border-radius: 999px;
 }
 
-.sponsors-join__cta:hover {
+a.sponsors-join__cta:hover {
   color: var(--bg-elevated);
   filter: brightness(0.95);
 }
@@ -4723,5 +4746,119 @@ a.sponsors-join__cta:focus-visible {
 
   .subpage--parents .for-parents__age {
     grid-column: 1 / -1;
+  }
+}
+
+
+/* Progressive navigation: links remain available before JS loads and without JS. */
+.site-nav:not([data-enhanced="true"]) {
+  position: static;
+}
+
+.site-nav:not([data-enhanced="true"]) .site-nav__bar {
+  flex-wrap: wrap;
+}
+
+body:has(.site-nav:not([data-enhanced="true"])) {
+  padding-top: 0;
+}
+
+body:has(.site-nav:not([data-enhanced="true"])) #hero {
+  margin-top: 0;
+}
+
+@media (max-width: 64rem) {
+  .site-nav:not([data-enhanced="true"]) .site-nav__list {
+    flex: 1 1 100%;
+    gap: 0.25rem 0.75rem;
+    padding-block: 0.5rem;
+  }
+
+  .site-nav:not([data-enhanced="true"]) .site-nav__list li {
+    width: auto;
+  }
+}
+
+/* Small-screen text and touch targets must stay usable with enlarged text. */
+.subpage,
+.section__inner,
+.contact-card,
+.press-kit__tile {
+  overflow-wrap: anywhere;
+}
+
+.episode-filter {
+  height: auto;
+  min-height: 2.75rem;
+}
+
+.episodes-section__title {
+  display: block;
+}
+
+.contact-social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.75rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-social-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-size: 0.875rem;
+}
+
+.subpage--parents a.fp-submit {
+  text-align: center;
+  text-decoration: none;
+}
+
+.launch-note a {
+  color: var(--ink);
+  text-underline-offset: 0.2em;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* Wide artboard coordinates must not cover content on phones and tablets. */
+@media (max-width: 64rem) {
+  .page-band .sec-decor {
+    display: none;
+  }
+}
+
+@media (max-width: 40rem) {
+  .hero-scroll-hint {
+    display: none;
+  }
+}
+
+
+a.sponsors-join__cta:focus-visible {
+  outline-color: var(--ink);
+}
+
+
+@media (max-width: 64rem) {
+  .site-nav__bar.wrap {
+    width: 100%;
+    column-gap: 0.25rem;
   }
 }

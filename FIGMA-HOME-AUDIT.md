@@ -1,5 +1,7 @@
 # Homepage vs Figma “Home” frame — audit
 
+> **Historical reference — superseded September 30, 2026.** The measurements, line references, findings, and alignment statements below describe an earlier implementation and are preserved unchanged as design history. They are not a current defect list or current proof of Figma parity. See the [September 30 audit](docs/AUDIT-2026-09-30.md), [current remaining-work ledger](docs/REMAINING-WORK-2026-09-30.md), and [reproducible browser checks](docs/STATIC-BROWSER-QA.md) for current implementation evidence. Exact design acceptance still requires comparison with the approved live design.
+
 **Figma file:** `pMTrEpUeEzi50akYrZOidM`  
 **Home frame node:** `6:2` (1512×3362)  
 **Code:** [index.html](index.html), [css/styles.css](css/styles.css)
