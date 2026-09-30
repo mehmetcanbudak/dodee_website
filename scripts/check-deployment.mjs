@@ -11,6 +11,7 @@ const expectedOrigin = new URL(process.env.CANONICAL_ORIGIN || origin.href).orig
 const config = JSON.parse(await readFile(new URL("../vercel.json", import.meta.url), "utf8"));
 const headers = config.headers.find(entry => entry.source === "/(.*)").headers;
 const results = { origin: origin.origin, expectedOrigin, checkedAt: new Date().toISOString(), checks: [] };
+const socialImages = new Set();
 
 async function check(path, task) {
   try {
@@ -35,8 +36,19 @@ for (const path of ["/", "/about.html", "/videos.html", "/for-parents.html", "/c
     assert.match(html, /<main[\s>]/i);
     const canonical = html.match(/<link\s+[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)/i)?.[1];
     assert.ok(canonical, "Missing canonical URL");
-    assert.equal(new URL(canonical).origin, expectedOrigin);
+    assert.equal(canonical, new URL(path, expectedOrigin).href);
     assert.doesNotMatch(html, /<meta[^>]+name=["']robots["'][^>]+content=["'][^"']*noindex/i);
+    assert.match(html, /<title>[^<]+<\/title>/i);
+    for (const name of ["og:title", "og:description", "og:image:alt"]) {
+      assert.match(html, new RegExp(`<meta\\s+[^>]*property=["']${name}["'][^>]*content=["'][^"']+`, "i"));
+    }
+    const socialUrl = html.match(/<meta\s+[^>]*property=["']og:url["'][^>]*content=["']([^"']+)/i)?.[1];
+    assert.equal(socialUrl, canonical);
+    const socialImage = html.match(/<meta\s+[^>]*property=["']og:image["'][^>]*content=["']([^"']+)/i)?.[1];
+    assert.ok(socialImage, "Missing social preview image");
+    assert.equal(new URL(socialImage).origin, expectedOrigin);
+    socialImages.add(new URL(socialImage).pathname);
+    assert.match(html, /<meta\s+[^>]*name=["']twitter:card["'][^>]*content=["']summary_large_image["']/i);
   });
 }
 
@@ -56,9 +68,16 @@ await check("/sitemap.xml", async response => {
   assert.equal(new Set(locations).size, 8);
   for (const location of locations) assert.equal(new URL(location).origin, expectedOrigin);
 });
-for (const path of ["/css/styles.css", "/js/main.js", "/assets/nav-logo.png", "/favicon.ico"]) {
+for (const path of ["/css/styles.css", "/css/fonts.css", "/js/main.js", "/js/nav.js", "/assets/nav-logo.png", "/assets/hero-characters-640.webp", "/assets/hero-characters-960.webp", "/favicon.ico"]) {
   await check(path, async response => {
     assert.equal(response.status, 200);
+    assert.ok((await response.arrayBuffer()).byteLength > 0);
+  });
+}
+for (const path of socialImages) {
+  await check(path, async response => {
+    assert.equal(response.status, 200);
+    assert.match(response.headers.get("content-type") || "", /^image\//);
     assert.ok((await response.arrayBuffer()).byteLength > 0);
   });
 }

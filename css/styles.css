@@ -14,7 +14,7 @@
  * body          padding-top reserves space for the fixed nav; flex column + main { flex: 1 } pins footer on short pages.
  */
 
-/* Typography: DynaPuff + Nunito loaded via Google Fonts (see HTML <link>). */
+/* Typography: locally hosted DynaPuff + Nunito (see css/fonts.css). */
 
 :root {
   --bg: #faf6f0;
@@ -3426,7 +3426,8 @@ a.sponsors-join__cta:focus-visible {
   border-color: rgba(143, 166, 224, 0.18);
 }
 
-.page-band--clue .section__lead {
+.page-band--clue .section__lead,
+.page-band--follow .section__lead {
   color: var(--ink);
 }
 

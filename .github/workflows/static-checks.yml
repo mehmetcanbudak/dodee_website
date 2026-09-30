@@ -1,6 +1,7 @@
 name: Static website checks
 on:
   push:
+    branches: [main]
   pull_request:
 permissions:
   contents: read
@@ -9,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 jobs:
   check:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -26,7 +27,7 @@ jobs:
       - run: npm run check
       - run: npm audit --audit-level=moderate
   browser:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     strategy:
       fail-fast: false
@@ -54,7 +55,7 @@ jobs:
           retention-days: 14
           if-no-files-found: warn
   performance:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1

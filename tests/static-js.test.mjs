@@ -189,7 +189,9 @@ test("mobile navigation keeps closed links inert and allows Tab to leave the dis
   view.document.dispatchEvent(tab);
   assert.equal(tab.defaultPrevented, false);
   view.document.activeElement = new Element();
-  view.nav.dispatchEvent(new Event("focusout"));
+  const focusout = new Event("focusout");
+  Object.defineProperty(focusout, "relatedTarget", { value: view.document.activeElement });
+  view.nav.dispatchEvent(focusout);
   await Promise.resolve();
   assert.equal(view.toggle.getAttribute("aria-expanded"), "false");
   assert.notEqual(view.document.activeElement, view.toggle);
@@ -219,6 +221,15 @@ test("navigation initializes during parsing and preserves native link activation
   const view = await navigation(t, true, "loading");
   assert.equal(view.nav.dataset.enhanced, "true");
   view.toggle.click();
+  view.document.activeElement = view.document.body;
+  const internalFocusout = new Event("focusout");
+  Object.defineProperty(internalFocusout, "relatedTarget", { value: view.firstLink });
+  view.nav.dispatchEvent(internalFocusout);
+  await Promise.resolve();
+  assert.equal(view.list.inert, false, "A transient body focus must not hide the link receiving focus");
+  view.nav.dispatchEvent(new Event("focusout"));
+  await Promise.resolve();
+  assert.equal(view.list.inert, false, "Unknown next focus must not cancel pending native link activation");
   view.firstLink.focus();
   const click = new Event("click", { cancelable: true });
   Object.defineProperty(click, "target", { value: view.firstLink });

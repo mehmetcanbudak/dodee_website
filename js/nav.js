@@ -43,10 +43,13 @@ function init() {
   });
 
   // This is a navigation disclosure, not a modal. Tab can reach Close and leave it.
-  nav.addEventListener("focusout", () => {
-    queueMicrotask(() => {
-      if (!nav.contains(document.activeElement)) setMenuOpen(false);
-    });
+  nav.addEventListener("focusout", (event) => {
+    // During a pointer focus change activeElement can briefly be the body.
+    // Only close when the browser identifies a next focus target outside nav;
+    // making an internal link inert before it receives focus cancels its click.
+    if (event.relatedTarget instanceof Node && !nav.contains(event.relatedTarget)) {
+      setMenuOpen(false);
+    }
   });
 
   const onBreakpointChange = () => {

@@ -93,7 +93,7 @@ async function pixelContrast(page, checks) {
     }
     return texts;
   }, targets);
-  const hideText = await page.addStyleTag({ content: '* { -webkit-text-fill-color: transparent !important; text-shadow: none !important; }' });
+  const hideText = await page.addStyleTag({ content: '* { -webkit-text-fill-color: transparent !important; text-shadow: none !important; text-decoration-color: transparent !important; text-emphasis-color: transparent !important; }' });
   let pixels;
   try { pixels = await page.screenshot({ fullPage: true, animations: 'disabled' }); }
   finally { await hideText.evaluate(element => element.remove()); }
@@ -104,7 +104,7 @@ async function pixelContrast(page, checks) {
     const data = context.getImageData(0, 0, image.width, image.height).data;
     const luminance = rgb => rgb.map(channel => { const value = channel / 255; return value <= .04045 ? value / 12.92 : ((value + .055) / 1.055) ** 2.4; }).reduce((sum, value, i) => sum + value * [.2126, .7152, .0722][i], 0);
     return samples.map(sample => {
-      let minimum = Infinity, darkestPixel = null;
+      let minimum = Infinity, worstPixel = null;
       for (const rect of sample.rects) {
         for (let y = Math.max(0, Math.ceil(rect.top)); y < Math.min(image.height, Math.floor(rect.bottom)); y++) {
           for (let x = Math.max(0, Math.ceil(rect.left)); x < Math.min(image.width, Math.floor(rect.right)); x++) {
@@ -113,11 +113,11 @@ async function pixelContrast(page, checks) {
             const foreground = sample.color.slice(0, 3).map((value, i) => value * sample.color[3] + background[i] * (1 - sample.color[3]));
             const a = luminance(foreground), b = luminance(background);
             const contrast = (Math.max(a, b) + .05) / (Math.min(a, b) + .05);
-            if (contrast < minimum) { minimum = contrast; darkestPixel = { x, y, background }; }
+            if (contrast < minimum) { minimum = contrast; worstPixel = { x, y, background }; }
           }
         }
       }
-      return { selector: sample.selector, text: sample.text, threshold: sample.threshold, minimumRatio: Math.round(minimum * 100) / 100, passed: minimum + .005 >= sample.threshold, worstPixel: darkestPixel };
+      return { selector: sample.selector, text: sample.text, threshold: sample.threshold, minimumRatio: Math.round(minimum * 100) / 100, passed: minimum + .005 >= sample.threshold, worstPixel };
     });
   }, { png: pixels.toString('base64'), samples });
 }
@@ -229,12 +229,17 @@ try {
         await page.goto(`${origin}/${route}.html`, { waitUntil: 'networkidle' });
         await revealPage(page);
         const checks = await auditPage(page);
-        if (motion === 'reduce' && (width === 390 || width === 1512)) checks.pixelContrast = await pixelContrast(page, checks);
-        recordAudit(`${motion} ${width}px ${route}`, checks, { width, route, motion });
-        if (motion === 'reduce') assert.equal(checks.runningAnimations, 0, 'Reduced motion must stop decorative animations');
+        if (route === 'index') {
+          await page.locator('.hero__art-img').evaluate(image => image.decode());
+          assert.ok(await page.locator('.hero__art-img').evaluate(image => image.naturalWidth > 0 && image.getBoundingClientRect().width > 0), 'Hero artwork must load and have a visible layout box');
+        }
+        // Preserve normal visual evidence before the temporary contrast paint probe.
         if (width === 390 || width === 1440 || width === 1512) {
           await page.screenshot({ path: path.join(outputDir, `${route}-${width}-${motion}.png`), fullPage: true });
         }
+        if (motion === 'reduce' && (width === 390 || width === 1440 || width === 1512)) checks.pixelContrast = await pixelContrast(page, checks);
+        recordAudit(`${motion} ${width}px ${route}`, checks, { width, route, motion });
+        if (motion === 'reduce') assert.equal(checks.runningAnimations, 0, 'Reduced motion must stop decorative animations');
       }
       await context.close();
     }
@@ -296,7 +301,7 @@ try {
   await page.goto(`${origin}/videos.html`);
   await page.evaluate(() => document.fonts.ready);
   assert.ok(typographyRequests.every(url => url.startsWith(origin + '/')), 'Typography resources must be hosted locally');
-  const loadedFonts = await page.evaluate(() => [...document.fonts].filter(font => font.status === 'loaded').map(font => font.family));
+  const loadedFonts = await page.evaluate(() => [...document.fonts].filter(font => font.status === 'loaded').map(font => font.family.replace(/[\"']/g, '')));
   assert.ok(loadedFonts.includes('DynaPuff') && loadedFonts.includes('Nunito'), 'Both local font families must load under native CSP');
   results.push({ selfHostedFonts: 'passed', typographyRequests });
   const toggle = page.locator('#primary-nav-toggle');
@@ -309,7 +314,7 @@ try {
   assert.equal(await toggle.evaluate(el => el === document.activeElement), true);
   await toggle.click();
   await page.getByRole('link', { name: 'About', exact: true }).click();
-  await page.waitForURL('**/about.html');
+  await page.waitForURL('**/about.html', { timeout: 5000 });
   await page.goto(`${origin}/videos.html`);
   for (const [label, count] of [['Out now', 1], ['Updates', 2], ['All', 3]]) {
     await page.getByRole('button', { name: label, exact: true }).click();
