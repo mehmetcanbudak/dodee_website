@@ -13,13 +13,14 @@ const origin = new URL(process.argv[2] || "http://127.0.0.1:8080");
 assert.ok(["http:", "https:"].includes(origin.protocol), "Use an HTTP(S) site URL");
 const scope = ["localhost", "127.0.0.1", "[::1]"].includes(origin.hostname) ? "local-lab" : "deployed-lab";
 const paths = (process.env.QA_PERF_ROUTES || "/").split(",");
-const includeMedia = process.env.QA_PERF_INCLUDE_MEDIA === "1";
+// Measure the actual initial page by default; opt out only for historical comparisons.
+const includeMedia = process.env.QA_PERF_INCLUDE_MEDIA !== "0";
 const runs = Number(process.env.QA_PERF_RUNS || 3);
 assert.ok(Number.isInteger(runs) && runs >= 1 && runs <= 5, "Use 1–5 performance runs");
 const output = resolve(root, process.env.QA_PERF_OUTPUT || `test-results/performance/${scope}`);
 const budget = JSON.parse(await readFile(resolve(root, "performance-budget.json"), "utf8"));
 await mkdir(output, { recursive: true });
-const results = { scope, origin: origin.href, checkedAt: new Date().toISOString(), runs, methodology: "Lighthouse mobile defaults with simulated Slow 4G and CPU throttling; median of repeated cold navigations. Local HTTP does not measure hosting/CDN/TLS/field performance.", transport: process.env.QA_PERF_TRANSPORT || "Direct origin response; no transport proxy.", thirdPartyExclusions: includeMedia ? [] : ["YouTube embeds and resources"], includeMedia, budget, pages: [] };
+const results = { scope, origin: origin.href, checkedAt: new Date().toISOString(), runs, methodology: "Lighthouse mobile defaults with simulated Slow 4G and CPU throttling; median of repeated cold navigations with no scripted playback activation. Local HTTP does not measure hosting/CDN/TLS/field performance.", transport: process.env.QA_PERF_TRANSPORT || "Direct origin response; no transport proxy.", thirdPartyExclusions: includeMedia ? [] : ["YouTube embeds and resources"], includeMedia, budget, pages: [] };
 let failed = false;
 const median = values => [...values].sort((a,b) => a-b)[Math.floor(values.length/2)];
 

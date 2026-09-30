@@ -16,6 +16,7 @@ const socialImages = new Set();
 async function check(path, task) {
   try {
     const response = await fetch(new URL(path, origin), { signal: AbortSignal.timeout(20_000) });
+    assert.equal(new URL(response.url).origin, origin.origin, "Request redirected off-site; a protected preview login is not an application response");
     await task(response);
     results.checks.push({ path, status: "passed", httpStatus: response.status });
     console.log(`PASS ${path}`);
@@ -32,6 +33,11 @@ for (const path of ["/", "/about.html", "/videos.html", "/for-parents.html", "/c
     for (const { key, value } of headers) assert.equal(response.headers.get(key), value, `${key} differs from checked-in policy`);
     assert.ok(response.headers.get("strict-transport-security"), "HTTPS response needs HSTS");
     const html = await response.text();
+    if (path === "/") {
+      assert.match(html, /data-media-play/, "Homepage must offer the video play control");
+      assert.doesNotMatch(html, /<iframe\b/i, "Video player must load only after activation");
+      assert.doesNotMatch(html, /<link[^>]+rel=["'](?:preconnect|dns-prefetch)["'][^>]+youtube/i, "Video provider must not connect before activation");
+    }
     assert.match(html, /<h1[\s>]/i);
     assert.match(html, /<main[\s>]/i);
     const canonical = html.match(/<link\s+[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)/i)?.[1];
@@ -68,7 +74,7 @@ await check("/sitemap.xml", async response => {
   assert.equal(new Set(locations).size, 8);
   for (const location of locations) assert.equal(new URL(location).origin, expectedOrigin);
 });
-for (const path of ["/css/styles.css", "/css/fonts.css", "/js/main.js", "/js/nav.js", "/assets/nav-logo.png", "/assets/hero-characters-640.webp", "/assets/hero-characters-960.webp", "/favicon.ico"]) {
+for (const path of ["/css/styles.css", "/css/fonts.css", "/js/main.js", "/js/nav.js", "/js/media.js", "/assets/nav-logo.png", "/assets/hero-characters-640.webp", "/assets/hero-characters-960.webp", "/favicon.ico"]) {
   await check(path, async response => {
     assert.equal(response.status, 200);
     assert.ok((await response.arrayBuffer()).byteLength > 0);

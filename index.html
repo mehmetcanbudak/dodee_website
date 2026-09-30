@@ -26,7 +26,6 @@
     <meta name="theme-color" content="#faf6f0" />
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
     <link rel="icon" href="assets/nav-logo.png" type="image/png" />
-    <link rel="preconnect" href="https://www.youtube-nocookie.com" />
     <link rel="preload" href="assets/hero-characters.webp" imagesrcset="assets/hero-characters-640.webp 640w, assets/hero-characters-960.webp 960w, assets/hero-characters.webp 1500w" imagesizes="(max-width: 640px) min(calc(92vw - 44px), 352px), min(42.8vw, 647px)" as="image" type="image/webp" fetchpriority="high" />
     <link rel="preload" href="assets/fonts/dynapuff-latin-v9.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="assets/fonts/nunito-latin-v32.woff2" as="font" type="font/woff2" crossorigin />
@@ -116,21 +115,17 @@
         <div class="section__inner">
           <h2 id="teaser-heading" class="section__title section__title--teaser">Meet&nbsp;Dodee&nbsp;for the First Time</h2>
           <p class="section__lead">Watch our teaser and discover the colorful world of Dodee &amp; Onur — where every episode is a new adventure packed with English learning magic.</p>
-          <div class="teaser-embed" >
-            <div class="teaser-embed__inner">
-              <iframe
-                class="teaser-embed__iframe"
-                src="https://www.youtube-nocookie.com/embed/tHlpVMTYDhg"
-                title="Dodee teaser on YouTube"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-                loading="lazy"
-                referrerpolicy="strict-origin-when-cross-origin"
-                sandbox="allow-scripts allow-same-origin allow-presentation allow-popups"
-              ></iframe>
+          <div class="teaser-embed">
+            <div class="teaser-embed__inner" data-media>
+              <img class="teaser-embed__poster" src="assets/hero-characters-640.webp" alt="" width="640" height="640" loading="lazy" />
+              <button type="button" class="teaser-embed__play" data-media-play aria-describedby="teaser-provider-note" hidden>
+                <span class="teaser-embed__play-label"><span aria-hidden="true">&#9654;</span> Play<span class="visually-hidden"> teaser</span></span>
+              </button>
             </div>
           </div>
-          <a class="teaser__cta" href="https://www.youtube.com/@Dodee-Our-Buddy" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+          <p class="teaser__note" id="teaser-provider-note">Playing the teaser loads YouTube’s video player.</p>
+          <noscript><p class="teaser__note">Use the link below to watch the teaser on YouTube.</p></noscript>
+          <a class="teaser__cta" href="https://www.youtube.com/watch?v=tHlpVMTYDhg" target="_blank" rel="noopener noreferrer">Watch teaser on YouTube</a>
         </div>
         </div>
         </div>
@@ -254,5 +249,6 @@
     </footer>
 
     <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/media.js"></script>
   </body>
 </html>
